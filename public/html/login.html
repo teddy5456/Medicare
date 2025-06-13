@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>MediCare Hospital - Login</title>
+  <link rel="stylesheet" href="/public/css/style.css" />
+  <link rel="stylesheet" href="/public/css/auth.css" />
+</head>
+<body>
+  <div class="container">
+    <nav class="navbar">
+      <div class="logo">
+        <img src="https://img.icons8.com/ios-filled/50/4a90e2/hospital-room.png" alt="MediCare Hospital Logo" />
+        <span>MediCare</span>
+      </div>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About Us</a></li>
+        <li><a href="services.html">Services</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li><a href="login.html" class="btn btn-outline">Login</a></li>
+        <li><a href="register.html" class="btn btn-primary">Register</a></li>
+      </ul>
+      <div class="hamburger">
+        <div class="line"></div>
+        <div class="line"></div>
+        <div class="line"></div>
+      </div>
+    </nav>
+
+    <main class="auth-container">
+      <div class="auth-card">
+        <div class="auth-header">
+          <h2>Login to Your Account</h2>
+          <p>Access your medical records, appointments, and more</p>
+        </div>
+
+        <form id="login-form" class="auth-form">
+          <div class="form-group">
+            <label for="email">Email Address</label>
+            <input type="email" id="email" name="email" placeholder="Enter your email" required />
+          </div>
+
+          <div class="form-group">
+            <label for="password">Password</label>
+            <input type="password" id="password" name="password" placeholder="Enter your password" required />
+            <div class="password-toggle">
+              <input type="checkbox" id="show-password" />
+              <label for="show-password">Show Password</label>
+            </div>
+          </div>
+
+          <div class="form-options">
+            <div class="remember-me">
+              <input type="checkbox" id="remember" />
+              <label for="remember">Remember me</label>
+            </div>
+            <a href="forgot-password.html" class="forgot-password">Forgot Password?</a>
+          </div>
+
+          <button type="submit" class="btn btn-primary btn-block">Login</button>
+
+          <div class="auth-footer">
+            <p>Don't have an account? <a href="register.html">Register here</a></p>
+          </div>
+        </form>
+
+        <div class="auth-social">
+          <p>Or login with</p>
+          <div class="social-buttons">
+            <button class="btn btn-social google">
+              <img src="https://img.icons8.com/color/48/000000/google-logo.png" alt="Google" />
+              Google
+            </button>
+            <button class="btn btn-social facebook">
+              <img src="https://img.icons8.com/color/48/000000/facebook-new.png" alt="Facebook" />
+              Facebook
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div class="auth-image">
+        <img src="https://cdn-icons-png.flaticon.com/512/706/706830.png" alt="Doctor illustration" />
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-grid">
+        <div class="footer-col">
+          <div class="logo">
+            <img src="https://img.icons8.com/ios-filled/100/ffffff/hospital-room.png" alt="MediCare Hospital Logo"/>
+            <span>MediCare</span>
+          </div>
+          <p>Compassionate healthcare for you and your family.</p>
+          <div class="social-links">
+            <a href="#"><img src="https://img.icons8.com/ios-filled/30/ffffff/facebook.png" alt="Facebook"/></a>
+            <a href="#"><img src="https://img.icons8.com/ios-filled/30/ffffff/twitter.png" alt="Twitter"/></a>
+            <a href="#"><img src="https://img.icons8.com/ios-filled/30/ffffff/instagram-new.png" alt="Instagram"/></a>
+            <a href="#"><img src="https://img.icons8.com/ios-filled/30/ffffff/linkedin.png" alt="LinkedIn"/></a>
+          </div>
+        </div>
+        <div class="footer-col">
+          <h3>Quick Links</h3>
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="services.html">Services</a></li>
+            <li><a href="doctors.html">Our Doctors</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h3>Services</h3>
+          <ul>
+            <li><a href="#">General Medicine</a></li>
+            <li><a href="#">Pediatrics</a></li>
+            <li><a href="#">Cardiology</a></li>
+            <li><a href="#">Neurology</a></li>
+            <li><a href="#">Emergency Care</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h3>Contact Us</h3>
+          <ul class="contact-info">
+            <li><img src="https://img.icons8.com/ios-filled/20/ffffff/marker.png" alt="Location"/> 123 Medical Drive, Health City</li>
+            <li><img src="https://img.icons8.com/ios-filled/20/ffffff/phone.png" alt="Phone"/> (123) 456-7890</li>
+            <li><img src="https://img.icons8.com/ios-filled/20/ffffff/new-post.png" alt="Email"/> info@medicare.com</li>
+            <li><img src="https://img.icons8.com/ios-filled/20/ffffff/clock.png" alt="Hours"/> Mon-Fri: 8am-8pm</li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2023 MediCare Hospital. All rights reserved.</p>
+        <div class="footer-links">
+          <a href="privacy.html">Privacy Policy</a>
+          <a href="terms.html">Terms of Service</a>
+        </div>
+      </div>
+    </footer>
+  </div>
+
+  <script src="/public/js/main.js"></script>
+  <script src="/public/js/auth.js"></script>
+</body>
+</html>
