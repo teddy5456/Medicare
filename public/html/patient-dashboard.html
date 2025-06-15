@@ -6,6 +6,10 @@
   <title>MediCare - Patient Portal</title>
   <link rel="stylesheet" href="/public/css/style.css">
   <link rel="stylesheet" href="/public/css/patient-portal.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Epilogue:wght@700;800&display=swap" rel="stylesheet">
+
 </head>
 <body>
   <!-- Main Navigation -->
@@ -198,123 +202,125 @@
   </main>
 
   <!-- Modal Dialogs -->
-  <!-- Appointments Modal -->
-  <div class="modal" id="appointments-modal">
-    <div class="modal-container landscape">
-      <div class="modal-header">
-        <h2>
-          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
-            <line x1="16" y1="2" x2="16" y2="6"></line>
-            <line x1="8" y1="2" x2="8" y2="6"></line>
-            <line x1="3" y1="10" x2="21" y2="10"></line>
-          </svg>
-          Appointment Management
-        </h2>
-        <button class="close-modal">&times;</button>
-      </div>
-      <div class="modal-body grid-layout">
-        <div class="form-card card-1">
-          <h3>Schedule New Appointment</h3>
-          <form id="new-appointment-form">
-            <div class="form-group">
-              <label for="appointment-type">Appointment Type</label>
-              <select id="appointment-type" name="appointment-type">
-                <option value="">Select type</option>
-                <option value="checkup">Routine Checkup</option>
-                <option value="consultation">Consultation</option>
-                <option value="followup">Follow-up</option>
-                <option value="urgent">Urgent Care</option>
-              </select>
-            </div>
-            <div class="form-row">
-              <div class="form-group">
-                <label for="appointment-date">Date</label>
-                <input type="date" id="appointment-date" name="appointment-date">
-              </div>
-              <div class="form-group">
-                <label for="appointment-time">Time</label>
-                <select id="appointment-time" name="appointment-time">
-                  <option value="">Select time</option>
-                  <option value="08:00">8:00 AM</option>
-                  <option value="09:00">9:00 AM</option>
-                  <option value="10:00">10:00 AM</option>
-                  <option value="11:00">11:00 AM</option>
-                </select>
-              </div>
-            </div>
-            <div class="form-group">
-              <label for="appointment-doctor">Doctor</label>
-              <select id="appointment-doctor" name="appointment-doctor">
-                <option value="">Select doctor</option>
-                <option value="dr-smith">Dr. Smith (Cardiology)</option>
-                <option value="dr-johnson">Dr. Johnson (Pediatrics)</option>
-                <option value="dr-williams">Dr. Williams (General Medicine)</option>
-              </select>
-            </div>
-            <div class="form-group">
-              <label for="appointment-reason">Reason for Visit</label>
-              <textarea id="appointment-reason" name="appointment-reason" rows="3"></textarea>
-            </div>
-            <div class="form-actions">
-              <button type="submit" class="btn btn-primary">Schedule Appointment</button>
-            </div>
-          </form>
-        </div>
+<!-- Appointments Modal -->
+<div class="modal" id="appointments-modal" role="dialog" aria-modal="true" aria-labelledby="appointments-modal-title">
+  <div class="modal-container landscape">
+    
+    <!-- Modal Header -->
+    <div class="modal-header">
+      <h2 id="appointments-modal-title">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+          stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+          <line x1="16" y1="2" x2="16" y2="6"></line>
+          <line x1="8" y1="2" x2="8" y2="6"></line>
+          <line x1="3" y1="10" x2="21" y2="10"></line>
+        </svg>
+        Appointment Management
+      </h2>
+      <button class="close-modal" aria-label="Close appointment modal">&times;</button>
+    </div>
 
-        <div class="list-card card-2">
-          <h3>Upcoming Appointments</h3>
-          <div class="appointment-list">
-            <div class="appointment-item">
-              <div class="appointment-date">
-                <span class="day">15</span>
-                <span class="month">Jun</span>
-              </div>
-              <div class="appointment-details">
-                <h4>Dr. Sarah Johnson</h4>
-                <p>Cardiology Consultation</p>
-                <p>10:00 AM - 10:30 AM</p>
-              </div>
-              <div class="appointment-actions">
-                <button class="btn btn-text">Cancel</button>
-                <button class="btn btn-text">Reschedule</button>
-              </div>
+    <!-- Modal Body -->
+    <div class="modal-body grid-layout">
+
+      <!-- Schedule New Appointment Form -->
+      <div class="form-card card-1">
+        <h3>Schedule a New Appointment</h3>
+        <p class="form-description">Please fill out the form below to create a new appointment. All fields are required unless stated otherwise.</p>
+        <form id="new-appointment-form">
+                    <div id="availability-warning" style="color: red; margin-top: 10px;"></div>
+
+
+          <div class="form-group">
+            <label for="appointment-type">Appointment Type <span class="required">*</span></label>
+            <select id="appointment-type" name="appointment-type" required>
+              <option value="">-- Select appointment type --</option>
+              <option value="checkup">Routine Checkup</option>
+              <option value="consultation">Consultation</option>
+              <option value="followup">Follow-up Visit</option>
+              <option value="urgent">Urgent Medical Care</option>
+            </select>
+            <small class="form-help">Choose the type that best fits your medical needs.</small>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="appointment-date">Preferred Date <span class="required">*</span></label>
+              <input type="date" id="appointment-date" name="appointment-date" required>
+              <small class="form-help">Select your preferred appointment date.</small>
             </div>
-            <div class="appointment-item">
-              <div class="appointment-date">
-                <span class="day">22</span>
-                <span class="month">Jun</span>
-              </div>
-              <div class="appointment-details">
-                <h4>Dr. Michael Brown</h4>
-                <p>Follow-up Visit</p>
-                <p>2:00 PM - 2:45 PM</p>
-              </div>
-              <div class="appointment-actions">
-                <button class="btn btn-text">Cancel</button>
-                <button class="btn btn-text">Reschedule</button>
-              </div>
+            <div class="form-group">
+              <label for="appointment-time">Time Slot <span class="required">*</span></label>
+              <select id="appointment-time" name="appointment-time" required>
+                <option value="">-- Select time --</option>
+                <option value="08:00">8:00 AM - 8:30 AM</option>
+                <option value="09:00">9:00 AM - 9:30 AM</option>
+                <option value="10:00">10:00 AM - 10:30 AM</option>
+                <option value="11:00">11:00 AM - 11:30 AM</option>
+              </select>
+              <small class="form-help">Appointment times are in 30-minute intervals.</small>
             </div>
           </div>
-        </div>
 
-        <div class="history-card card-3">
-          <h3>Past Appointments</h3>
-          <div class="history-list">
-            <div class="history-item">
-              <p><strong>May 15, 2023</strong> - Annual Physical with Dr. Smith</p>
-            </div>
-            <div class="history-item">
-              <p><strong>April 3, 2023</strong> - Lab Tests</p>
-            </div>
-            <div class="history-item">
-              <p><strong>March 10, 2023</strong> - Cardiology Follow-up</p>
-            </div>
+          <div class="form-group">
+            <label for="appointment-doctor">Select Doctor <span class="required">*</span></label>
+            <select id="appointment-doctor" name="appointment-doctor" required>
+              <option value="">-- Select doctor --</option>
+              <option value="dr-smith">Dr. Amanda Smith (Cardiologist)</option>
+              <option value="dr-johnson">Dr. Sarah Johnson (Pediatrician)</option>
+              <option value="dr-williams">Dr. James Williams (General Practitioner)</option>
+            </select>
+            <small class="form-help">Select your preferred healthcare provider.</small>
+          </div>
+
+          <div class="form-group">
+            <label for="appointment-reason">Reason for Visit <span class="required">*</span></label>
+            <textarea id="appointment-reason" name="appointment-reason" rows="4" placeholder="Describe your symptoms or reason for the visit..." required></textarea>
+            <small class="form-help">Please be specific. This helps us prepare for your appointment.</small>
+          </div>
+
+          <div class="form-actions">
+            <button type="submit" class="btn btn-primary">Submit & Schedule</button>
+          </div>
+
+        </form>
+
+      </div>
+
+      
+
+      <!-- Upcoming Appointments -->
+      <div class="list-card card-2">
+        <h3>Upcoming Appointments</h3>
+        <p class="section-description">Here’s a list of your scheduled appointments. You can cancel or reschedule if necessary.</p>
+
+<div class="appointment-list">
+  <!-- JS will fill here -->
+</div>
+      </div>
+
+      <!-- Past Appointment History -->
+      <div class="history-card card-3">
+        <h3>Past Appointments</h3>
+        <p class="section-description">Your medical history from past visits is listed below for your reference.</p>
+        <div class="history-list">
+          <div class="history-item">
+            <p><strong>May 15, 2023:</strong> Annual Physical Exam with Dr. Amanda Smith - General Wellness Check</p>
+          </div>
+          <div class="history-item">
+            <p><strong>April 3, 2023:</strong> Lab Testing - Blood Panel and Urinalysis</p>
+          </div>
+          <div class="history-item">
+            <p><strong>March 10, 2023:</strong> Follow-up Consultation - Cardiology review with Dr. Sarah Johnson</p>
           </div>
         </div>
       </div>
+
     </div>
   </div>
+</div>
+
 
   <!-- Prescriptions Modal -->
   <div class="modal" id="prescriptions-modal">
@@ -724,5 +730,365 @@
   </div>
 
   <script src="/public/js/patient-portal.js"></script>
+  <script>
+  document.addEventListener("DOMContentLoaded", () => {
+    // Fetch user object from sessionStorage
+    const user = JSON.parse(sessionStorage.getItem("user"));
+
+    // Check if user data exists
+    if (user && user.fullName && user.email) {
+      // Update name
+      const nameElement = document.querySelector(".user-info h3");
+      if (nameElement) nameElement.textContent = user.fullName;
+
+      // Update email
+      const emailElement = document.querySelector(".user-meta .meta-item:first-child");
+      if (emailElement) emailElement.innerHTML = `
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" 
+          viewBox="0 0 24 24" fill="none" stroke="currentColor" 
+          stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 
+          0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+          <polyline points="22,6 12,13 2,6"></polyline>
+        </svg>
+        ${user.email}
+      `;
+
+      // Optional: Replace dummy patient ID or phone if stored
+      const patientIdElement = document.querySelector(".user-info p:first-of-type");
+      if (patientIdElement) patientIdElement.textContent = `Patient ID: ${user._id}`;
+
+      // You could also update phone number or visit date if available
+    } else {
+      console.warn("User data not found in sessionStorage.");
+    }
+  });
+</script>
+
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  const API_BASE = 'http://localhost:8000/api/appointments';
+  const USERS_API = 'http://localhost:8000/users';
+  const EMAILJS_CONFIG = {
+    service_id: 'service_6uu4fwd',
+    template_id: 'template_welqxde',
+    user_id: 'cy9YL054A1rcf2BH4'
+  };
+
+  const doctorMap = {};
+  const appointmentForm = document.getElementById('new-appointment-form');
+  const appointmentList = document.querySelector('.appointment-list');
+  const availabilityWarning = document.getElementById('availability-warning');
+
+  loadDoctorOptions();
+  loadAppointments();
+
+  ['appointment-date', 'appointment-time', 'appointment-doctor'].forEach(id => {
+    const el = document.getElementById(id);
+    if (el) el.addEventListener('change', checkDoctorAvailability);
+  });
+
+  if (appointmentForm) {
+    appointmentForm.addEventListener('submit', handleNewAppointment);
+  }
+
+  function getPatientId() {
+    const user = JSON.parse(sessionStorage.getItem('user'));
+    return user?._id;
+  }
+
+  function formatDateParts(isoDate) {
+    const date = new Date(isoDate);
+    return {
+      day: date.getDate(),
+      month: date.toLocaleString('default', { month: 'short' }),
+      fullDate: date.toLocaleDateString(),
+      isoDate
+    };
+  }
+
+  function capitalize(text) {
+    return text.charAt(0).toUpperCase() + text.slice(1);
+  }
+
+  function formatEndTime(startTime) {
+    const [hour, minute] = startTime.split(':').map(Number);
+    const date = new Date(2000, 0, 1, hour, minute + 30);
+    return `${String(date.getHours()).padStart(2, '0')}:${String(date.getMinutes()).padStart(2, '0')}`;
+  }
+
+  async function loadDoctorOptions() {
+    try {
+      const res = await fetch(`${USERS_API}?role=doctor`);
+      if (!res.ok) throw new Error('Doctor fetch failed');
+      const users = await res.json();
+      const doctors = users.filter(u => u.role === 'doctor' && u.isActive !== false);
+      const select = document.getElementById('appointment-doctor');
+      if (!select) return;
+
+      select.innerHTML = '<option value="">-- Select doctor --</option>';
+      doctors.forEach(doc => {
+        const opt = document.createElement('option');
+        opt.value = doc._id;
+        opt.textContent = doc.fullName;
+        select.appendChild(opt);
+        doctorMap[doc._id] = doc.fullName;
+      });
+    } catch (err) {
+      console.error('Doctor loading failed:', err);
+    }
+  }
+
+  async function loadAppointments() {
+    const patientId = getPatientId();
+    if (!patientId || !appointmentList) return;
+
+    try {
+      const res = await fetch(`${API_BASE}?patientId=${patientId}`);
+      if (!res.ok) throw new Error('Appointment fetch failed');
+
+      const appointments = await res.json();
+      const today = new Date().toISOString().split('T')[0];
+
+      const upcoming = appointments.filter(app =>
+        app.date >= today && ['pending', 'confirmed'].includes(app.status)
+      );
+
+      appointmentList.innerHTML = upcoming.length ? '' : '<p class="no-appointments">No upcoming appointments.</p>';
+
+      upcoming.forEach(app => {
+        const { day, month } = formatDateParts(app.date);
+        const doctorName = doctorMap[app.doctorId] || 'Unknown Doctor';
+        const div = document.createElement('div');
+        div.className = 'appointment-item';
+        div.innerHTML = `
+          <div class="appointment-date">
+            <span class="day">${day}</span>
+            <span class="month">${month}</span>
+          </div>
+          <div class="appointment-details">
+            <h4>${doctorName}</h4>
+            <p><strong>Type:</strong> ${capitalize(app.appointmentType)}</p>
+            <p><strong>Time:</strong> ${app.timeSlot}</p>
+            <p><strong>Status:</strong> ${capitalize(app.status)}</p>
+          </div>
+          <div class="appointment-actions">
+            <button class="btn btn-warning" onclick="rescheduleAppointment('${app._id}')">Reschedule</button>
+            <button class="btn btn-danger" onclick="cancelAppointment('${app._id}')">Cancel</button>
+          </div>
+        `;
+        appointmentList.appendChild(div);
+      });
+    } catch (err) {
+      console.error('Appointments loading error:', err);
+      appointmentList.innerHTML = `<p class="error">Failed to load appointments. Please refresh the page.</p>`;
+    }
+  }
+
+  async function checkDoctorAvailability() {
+    const doctorId = document.getElementById('appointment-doctor')?.value;
+    const date = document.getElementById('appointment-date')?.value;
+    const time = document.getElementById('appointment-time')?.value;
+    const submitBtn = document.querySelector('#new-appointment-form button[type="submit"]');
+
+    if (!doctorId || !date || !time || !submitBtn) return;
+
+    const timeSlot = `${time}-${formatEndTime(time)}`;
+
+    try {
+      const res = await fetch(API_BASE);
+      const appointments = await res.json();
+      const isTaken = appointments.some(app =>
+        app.doctorId === doctorId &&
+        app.date === date &&
+        app.timeSlot === timeSlot &&
+        ['pending', 'confirmed'].includes(app.status)
+      );
+
+      if (isTaken) {
+        availabilityWarning.textContent = '⚠ Slot already booked. Choose another.';
+        submitBtn.disabled = true;
+      } else {
+        availabilityWarning.textContent = '';
+        submitBtn.disabled = false;
+      }
+    } catch (err) {
+      console.error('Availability check failed:', err);
+      availabilityWarning.textContent = 'Error checking availability.';
+      submitBtn.disabled = true;
+    }
+  }
+
+  async function handleNewAppointment(e) {
+    e.preventDefault();
+
+    const patientId = getPatientId();
+    if (!patientId) return alert('Login required.');
+
+    const type = document.getElementById('appointment-type')?.value;
+    const date = document.getElementById('appointment-date')?.value;
+    const time = document.getElementById('appointment-time')?.value;
+    const doctorId = document.getElementById('appointment-doctor')?.value;
+    const reason = document.getElementById('appointment-reason')?.value;
+    const timeSlot = `${time}-${formatEndTime(time)}`;
+
+    if (!type || !date || !time || !doctorId || !reason) return alert('Fill all fields.');
+
+    try {
+      const res = await fetch(API_BASE);
+      const appointments = await res.json();
+      const isTaken = appointments.some(app =>
+        app.doctorId === doctorId && app.date === date && app.timeSlot === timeSlot && ['pending', 'confirmed'].includes(app.status)
+      );
+
+      if (isTaken) return alert('Time slot already taken.');
+
+      const payload = {
+        appointmentType: type,
+        patientId,
+        doctorId,
+        date,
+        timeSlot,
+        reason,
+        status: 'pending'
+      };
+
+      const createRes = await fetch(API_BASE, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload)
+      });
+
+      const newApp = await createRes.json();
+      const user = JSON.parse(sessionStorage.getItem('user'));
+
+      await sendAppointmentEmail(user.email, {
+        appointment_id: newApp._id,
+        patient_name: user.fullName,
+        doctor_name: doctorMap[doctorId],
+        appointment_date: formatDateParts(date).fullDate,
+        appointment_time: timeSlot,
+        appointment_type: capitalize(type),
+        appointment_reason: reason,
+        patient_email: user.email
+      }, 'confirm');
+
+      alert('Appointment scheduled.');
+      e.target.reset();
+      loadAppointments();
+    } catch (err) {
+      console.error('Error submitting appointment:', err);
+      alert('Submission failed. Try again.');
+    }
+  }
+
+  async function sendAppointmentEmail(patientEmail, appointmentData, actionType) {
+    const templateParams = {
+      ...appointmentData,
+      is_confirmation: actionType === 'confirm' ? 'true' : '',
+      is_cancellation: actionType === 'cancel' ? 'true' : '',
+      is_reschedule: actionType === 'reschedule' ? 'true' : ''
+    };
+
+    try {
+      await fetch('https://api.emailjs.com/api/v1.0/email/send', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ ...EMAILJS_CONFIG, template_params: templateParams })
+      });
+    } catch (err) {
+      console.error('Email failed:', err);
+    }
+  }
+
+window.cancelAppointment = async (id) => {
+  if (!confirm('Cancel this appointment?')) return;
+
+  try {
+    const res = await fetch(`${API_BASE}?appointmentId=${id}`);
+    const appointment = await res.json();
+
+    await fetch(`${API_BASE}?appointmentId=${id}`, { method: 'DELETE' });
+
+    const user = JSON.parse(sessionStorage.getItem('user'));
+    await sendAppointmentEmail(user.email, {
+      appointment_id: id,
+      patient_name: user.fullName,
+      doctor_name: doctorMap[appointment.doctorId],
+      appointment_date: formatDateParts(appointment.date).fullDate,
+      appointment_time: appointment.timeSlot,
+      appointment_type: capitalize(appointment.appointmentType),
+      appointment_reason: appointment.reason,
+      patient_email: user.email
+    }, 'cancel');
+
+    // Remove from DOM instantly
+    const appointmentDiv = document.querySelector(`.appointment-item button.btn-danger[onclick*="${id}"]`)?.closest('.appointment-item');
+    if (appointmentDiv) appointmentDiv.remove();
+
+    // If no more appointments, show fallback
+    if (appointmentList.children.length === 0) {
+      appointmentList.innerHTML = '<p class="no-appointments">No upcoming appointments.</p>';
+    }
+
+    alert('Appointment cancelled.');
+  } catch (err) {
+    console.error('Cancel error:', err);
+    alert('Failed to cancel appointment. Please try again.');
+  }
+};
+
+  window.rescheduleAppointment = async (id) => {
+    const newDate = prompt('New date (YYYY-MM-DD):');
+    const newTime = prompt('New time (HH:MM):');
+    if (!newDate || !newTime) return;
+
+    try {
+      const res = await fetch(`${API_BASE}/${id}`);
+      const appointment = await res.json();
+      const newSlot = `${newTime}-${formatEndTime(newTime)}`;
+
+      const allRes = await fetch(API_BASE);
+      const appointments = await allRes.json();
+      const isTaken = appointments.some(app =>
+        app.doctorId === appointment.doctorId &&
+        app.date === newDate &&
+        app.timeSlot === newSlot &&
+        ['pending', 'confirmed'].includes(app.status) &&
+        app._id !== id
+      );
+
+      if (isTaken) return alert('Time already booked.');
+
+      await fetch(`${API_BASE}/${id}`, {
+        method: 'PUT',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ date: newDate, timeSlot: newSlot, status: 'pending' })
+      });
+
+      const user = JSON.parse(sessionStorage.getItem('user'));
+      await sendAppointmentEmail(user.email, {
+        appointment_id: id,
+        patient_name: user.fullName,
+        doctor_name: doctorMap[appointment.doctorId],
+        appointment_date: formatDateParts(newDate).fullDate,
+        appointment_time: newSlot,
+        previous_date: formatDateParts(appointment.date).fullDate,
+        previous_time: appointment.timeSlot,
+        appointment_type: capitalize(appointment.appointmentType),
+        appointment_reason: appointment.reason,
+        patient_email: user.email
+      }, 'reschedule');
+
+      alert('Rescheduled successfully.');
+      loadAppointments();
+    } catch (err) {
+      console.error('Reschedule error:', err);
+    }
+  };
+});
+</script>
+
+
 </body>
 </html>

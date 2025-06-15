@@ -26,11 +26,24 @@ document.addEventListener('DOMContentLoaded', function() {
         return;
       }
       
-      // Here you would typically make an API call to authenticate
-      console.log('Login attempt with:', { email, password, rememberMe });
-      
-      // Simulate successful login
-      setTimeout(() => {
+      // Make API call to authenticate
+      fetch('http://localhost:8000/login', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          email: email,
+          password: password
+        })
+      })
+      .then(response => {
+        if (!response.ok) {
+          return response.json().then(err => { throw err; });
+        }
+        return response.json();
+      })
+      .then(data => {
         // Store user data in localStorage if "Remember me" is checked
         if (rememberMe) {
           localStorage.setItem('rememberedEmail', email);
@@ -38,10 +51,16 @@ document.addEventListener('DOMContentLoaded', function() {
           localStorage.removeItem('rememberedEmail');
         }
         
-        // Redirect based on user role (simulated here)
-        const userRole = simulateUserRole(email);
-        redirectAfterLogin(userRole);
-      }, 1000);
+        // Store user data in session
+        sessionStorage.setItem('user', JSON.stringify(data.user));
+        
+        // Redirect based on user role
+        redirectAfterLogin(data.user.role);
+      })
+      .catch(error => {
+        console.error('Login error:', error);
+        alert(error.error || 'Login failed. Please try again.');
+      });
     });
   }
   
@@ -61,14 +80,6 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   });
 });
-
-// Simulate different user roles based on email
-function simulateUserRole(email) {
-  if (email.includes('admin@')) return 'admin';
-  if (email.includes('doctor@')) return 'doctor';
-  if (email.includes('nurse@')) return 'nurse';
-  return 'patient';
-}
 
 // Redirect to appropriate dashboard
 function redirectAfterLogin(role) {

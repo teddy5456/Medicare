@@ -28,17 +28,41 @@ document.addEventListener('DOMContentLoaded', function() {
         phone: document.getElementById('phone').value.trim(),
         dob: document.getElementById('dob').value,
         gender: document.getElementById('gender').value,
-        password: passwordInput.value
+        password: passwordInput.value,
+        confirmPassword: confirmPasswordInput.value,
+        terms: document.getElementById('terms').checked
       };
       
-      // Here you would typically make an API call to register the user
-      console.log('Registration form data:', formData);
-      
-      // Simulate successful registration
-      setTimeout(() => {
-        alert('Registration successful! You will now be redirected to login.');
+      // Make API call to register the user
+      fetch('http://localhost:8000/register', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData)
+      })
+      .then(response => {
+        if (!response.ok) {
+          return response.json().then(err => { throw err; });
+        }
+        return response.json();
+      })
+      .then(data => {
+        alert(data.message || 'Registration successful! You will now be redirected to login.');
         window.location.href = 'login.html';
-      }, 1500);
+      })
+      .catch(error => {
+        console.error('Registration error:', error);
+        const errorMessage = error.error || 'Registration failed. Please try again.';
+        // Display error to user - example using a div with id="error-message"
+        const errorElement = document.getElementById('error-message');
+        if (errorElement) {
+          errorElement.textContent = errorMessage;
+          errorElement.style.display = 'block';
+        } else {
+          alert(errorMessage);
+        }
+      });
     });
   }
   
