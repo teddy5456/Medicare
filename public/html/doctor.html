@@ -1,67 +1,49 @@
-<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>MediCare - Doctor's Portal</title>
-  <link rel="stylesheet" href="/public/css/style.css">
+  <title>MediCare Pro - Doctor's Portal</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fullcalendar@5.11.3/main.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
   <link rel="stylesheet" href="/public/css/doctor.css">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Epilogue:wght@700;800&display=swap" rel="stylesheet">
 </head>
 <body>
   <!-- Main Navigation -->
   <nav class="main-nav">
     <div class="nav-container">
       <a href="index.html" class="logo">
-        <img src="assets/logo.png" alt="MediCare">
+        <img src="https://img.icons8.com/ios-filled/50/4a90e2/hospital-room.png" alt="MediCare Hospital Logo" />
         <span>MediCare</span>
       </a>
       <div class="nav-links">
-        <a href="about.html">About</a>
-        <a href="services.html">Services</a>
-        <a href="doctors.html">Our Doctors</a>
-        <a href="contact.html">Contact</a>
+        <a href="dashboard.html" class="active"><i class="fas fa-home"></i> Dashboard</a>
+        <a href="patients.html"><i class="fas fa-user-injured"></i> Patients</a>
+        <a href="schedule.html"><i class="fas fa-calendar-alt"></i> Schedule</a>
+        <a href="messages.html"><i class="fas fa-envelope"></i> Messages</a>
+        <a href="reports.html"><i class="fas fa-chart-bar"></i> Reports</a>
         <div class="user-menu">
-          <button class="user-btn">
-            <img src="assets/doctors/doctor1.jpg" alt="Doctor" class="user-avatar">
-            <span>Dr. Johnson</span>
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <polyline points="6 9 12 15 18 9"></polyline>
-            </svg>
+          <button class="user-btn" id="user-menu-btn">
+            <img src="https://images.pexels.com/photos/771742/pexels-photo-771742.jpeg" alt="Doctor" class="user-avatar">
+            <span id="doctor-name">Dr. Johnson</span>
+            <i class="fas fa-chevron-down"></i>
           </button>
-          <div class="dropdown-menu">
-            <a href="#" id="profile-link">
-              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
-                <circle cx="12" cy="7" r="4"></circle>
-              </svg>
-              My Profile
+          <div class="user-dropdown">
+            <a href="profile.html" class="user-dropdown-item">
+              <i class="fas fa-user"></i> My Profile
             </a>
-            <a href="#" id="settings-link">
-              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <circle cx="12" cy="12" r="3"></circle>
-                <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path>
-              </svg>
-              Settings
+            <a href="settings.html" class="user-dropdown-item">
+              <i class="fas fa-cog"></i> Settings
             </a>
-            <a href="#" id="logout">
-              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M10 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h4"></path>
-                <polyline points="17 16 21 12 17 8"></polyline>
-                <line x1="21" y1="12" x2="9" y2="12"></line>
-              </svg>
-              Logout
+            <div class="user-dropdown-divider"></div>
+            <a href="login.html" class="user-dropdown-item">
+              <i class="fas fa-sign-out-alt"></i> Logout
             </a>
           </div>
         </div>
       </div>
-      <button class="mobile-menu-btn">
-        <span></span>
-        <span></span>
-        <span></span>
-      </button>
     </div>
   </nav>
 
@@ -69,61 +51,15 @@
   <header class="portal-header">
     <div class="container">
       <div class="header-content">
-        <h1>Doctor's Portal</h1>
-        <p>Manage your patients and practice efficiently</p>
+        <h1>Welcome back, <span id="doctor-firstname">Sarah</span></h1>
+        <p>You have <strong>5 appointments</strong> today and <strong>3 pending approvals</strong> to review.</p>
         <div class="header-actions">
-          <button class="btn btn-primary" id="new-patient-btn">
-            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
-              <circle cx="8.5" cy="7" r="4"></circle>
-              <line x1="20" y1="8" x2="20" y2="14"></line>
-              <line x1="23" y1="11" x2="17" y2="11"></line>
-            </svg>
-            New Patient
+          <button class="btn btn-primary" id="new-appointment-btn">
+            <i class="fas fa-plus"></i> New Appointment
           </button>
-          <button class="btn btn-outline" id="quick-notes-btn">
-            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M12 19l7-7 3 3-7 7-3-3z"></path>
-              <path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z"></path>
-              <path d="M2 2l7.586 7.586"></path>
-              <circle cx="11" cy="11" r="2"></circle>
-            </svg>
-            Quick Notes
+          <button class="btn btn-outline" id="schedule-settings-btn">
+            <i class="fas fa-calendar-alt"></i> Schedule Settings
           </button>
-        </div>
-      </div>
-      <div class="user-card">
-        <div class="user-info">
-          <img src="assets/doctors/doctor1.jpg" alt="Dr. Sarah Johnson" class="user-avatar">
-          <div>
-            <h3>Dr. Sarah Johnson</h3>
-            <p>Cardiologist</p>
-            <p>MD, FACC</p>
-          </div>
-        </div>
-        <div class="user-meta">
-          <div class="meta-item">
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
-              <polyline points="22,6 12,13 2,6"></polyline>
-            </svg>
-            sjohnson@medicare.com
-          </div>
-          <div class="meta-item">
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
-            </svg>
-            (555) 987-6543
-          </div>
-          <div class="meta-item">
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
-              <line x1="16" y1="2" x2="16" y2="6"></line>
-              <line x1="8" y1="2" x2="8" y2="6"></line>
-              <line x1="3" y1="10" x2="21" y2="10"></line>
-            </svg>
-            Next availability: June 18, 2023
-          </div>
         </div>
       </div>
     </div>
@@ -132,727 +68,2039 @@
   <!-- Main Portal Content -->
   <main class="portal-main">
     <div class="container">
-      <!-- Quick Stats Cards -->
-      <div class="quick-stats">
-        <div class="stats-card">
-          <div class="stats-icon">
-            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
-              <line x1="16" y1="2" x2="16" y2="6"></line>
-              <line x1="8" y1="2" x2="8" y2="6"></line>
-              <line x1="3" y1="10" x2="21" y2="10"></line>
-            </svg>
+      <!-- Stats Overview -->
+      <div class="stats-grid">
+        <div class="stat-card">
+          <div class="stat-card-header">
+            <span class="stat-card-title">Today's Appointments</span>
+            <div class="stat-card-icon" style="background-color: var(--primary-500);">
+              <i class="fas fa-calendar-day"></i>
+            </div>
           </div>
-          <div class="stats-content">
-            <h3>Today's Appointments</h3>
-            <p class="stats-number">8</p>
-            <p class="stats-change positive">+2 from yesterday</p>
+          <div class="stat-card-value">5</div>
+          <div class="stat-card-change positive">
+            <i class="fas fa-arrow-up"></i>
+            <span>2 from yesterday</span>
           </div>
         </div>
-
-        <div class="stats-card">
-          <div class="stats-icon">
-            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
-              <circle cx="9" cy="7" r="4"></circle>
-              <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
-              <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
-            </svg>
+        
+        <div class="stat-card">
+          <div class="stat-card-header">
+            <span class="stat-card-title">Pending Approvals</span>
+            <div class="stat-card-icon" style="background-color: var(--warning-500);">
+              <i class="fas fa-clock"></i>
+            </div>
           </div>
-          <div class="stats-content">
-            <h3>Active Patients</h3>
-            <p class="stats-number">142</p>
-            <p class="stats-change positive">+5 this month</p>
+          <div class="stat-card-value">3</div>
+          <div class="stat-card-change negative">
+            <i class="fas fa-arrow-down"></i>
+            <span>1 from yesterday</span>
           </div>
         </div>
-
-        <div class="stats-card">
-          <div class="stats-icon">
-            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M10 2h4"></path>
-              <path d="M12 2v6"></path>
-              <rect x="4" y="10" width="16" height="12" rx="2"></rect>
-              <path d="M9 15h6"></path>
-            </svg>
+        
+        <div class="stat-card">
+          <div class="stat-card-header">
+            <span class="stat-card-title">Active Patients</span>
+            <div class="stat-card-icon" style="background-color: var(--success-500);">
+              <i class="fas fa-user-injured"></i>
+            </div>
           </div>
-          <div class="stats-content">
-            <h3>Prescriptions</h3>
-            <p class="stats-number">23</p>
-            <p class="stats-change">Pending review</p>
+          <div class="stat-card-value">127</div>
+          <div class="stat-card-change positive">
+            <i class="fas fa-arrow-up"></i>
+            <span>8 this month</span>
           </div>
         </div>
-
-        <div class="stats-card">
-          <div class="stats-icon">
-            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M22 12h-4l-3 9L9 3l-3 9H2"></path>
-            </svg>
+        
+        <div class="stat-card">
+          <div class="stat-card-header">
+            <span class="stat-card-title">Messages</span>
+            <div class="stat-card-icon" style="background-color: var(--secondary-500);">
+              <i class="fas fa-envelope"></i>
+            </div>
           </div>
-          <div class="stats-content">
-            <h3>Lab Results</h3>
-            <p class="stats-number">7</p>
-            <p class="stats-change negative">Waiting for review</p>
+          <div class="stat-card-value">12</div>
+          <div class="stat-card-change positive">
+            <i class="fas fa-arrow-up"></i>
+            <span>3 unread</span>
           </div>
         </div>
       </div>
 
-      <!-- Main Content Grid -->
       <div class="content-grid">
-        <!-- Today's Schedule -->
-        <section class="content-card today-schedule">
+        <!-- Calendar View -->
+        <section class="content-card calendar-view">
           <div class="card-header">
-            <h2>Today's Schedule</h2>
+            <h2>Appointment Calendar</h2>
             <div class="card-actions">
-              <button class="btn btn-text">View All</button>
+              <button class="btn btn-text tooltip" id="today-btn" data-tooltip="Go to today">
+                <i class="fas fa-calendar-day"></i>
+              </button>
+              <button class="btn btn-text tooltip" id="day-view-btn" data-tooltip="Day view">
+                <i class="fas fa-calendar-day"></i>
+              </button>
+              <button class="btn btn-text active tooltip" id="week-view-btn" data-tooltip="Week view">
+                <i class="fas fa-calendar-week"></i>
+              </button>
+              <button class="btn btn-text tooltip" id="month-view-btn" data-tooltip="Month view">
+                <i class="fas fa-calendar-alt"></i>
+              </button>
+              <button class="btn btn-text tooltip" id="list-view-btn" data-tooltip="List view">
+                <i class="fas fa-list"></i>
+              </button>
             </div>
           </div>
-          <div class="schedule-list">
-            <div class="schedule-item">
-              <div class="schedule-time">
-                <span>08:00 AM</span>
-                <span>30 min</span>
-              </div>
-              <div class="schedule-details">
-                <h4>John Doe</h4>
-                <p>Follow-up visit</p>
-                <div class="patient-meta">
-                  <span class="badge">Hypertension</span>
-                  <span class="badge">Type 2 Diabetes</span>
-                </div>
-              </div>
-              <div class="schedule-actions">
-                <button class="btn btn-text">Chart</button>
-                <button class="btn btn-primary">Start Visit</button>
-              </div>
+          <div id="calendar"></div>
+        </section>
+
+        <!-- Upcoming Appointments -->
+        <section class="content-card upcoming-appointments">
+          <div class="card-header">
+            <h2>Today's Appointments</h2>
+            <div class="card-actions">
+              <button class="btn btn-primary btn-icon tooltip" id="refresh-appointments" data-tooltip="Refresh">
+                <i class="fas fa-sync-alt"></i>
+              </button>
             </div>
-            <div class="schedule-item">
-              <div class="schedule-time">
-                <span>08:30 AM</span>
-                <span>30 min</span>
-              </div>
-              <div class="schedule-details">
-                <h4>Mary Smith</h4>
-                <p>Annual physical</p>
-                <div class="patient-meta">
-                  <span class="badge">New Patient</span>
-                </div>
-              </div>
-              <div class="schedule-actions">
-                <button class="btn btn-text">Chart</button>
-                <button class="btn btn-primary">Start Visit</button>
-              </div>
-            </div>
-            <div class="schedule-item">
-              <div class="schedule-time">
-                <span>09:00 AM</span>
-                <span>45 min</span>
-              </div>
-              <div class="schedule-details">
-                <h4>Robert Johnson</h4>
-                <p>Cardiology consult</p>
-                <div class="patient-meta">
-                  <span class="badge">Heart Disease</span>
-                  <span class="badge">High Cholesterol</span>
-                </div>
-              </div>
-              <div class="schedule-actions">
-                <button class="btn btn-text">Chart</button>
-                <button class="btn btn-primary">Start Visit</button>
-              </div>
-            </div>
+          </div>
+          <div class="schedule-list" id="today-appointments">
+            <div class="loading-content" style="min-height: 200px;"></div>
           </div>
         </section>
 
-        <!-- Recent Patients -->
-        <section class="content-card recent-patients">
+        <!-- Pending Approvals -->
+        <section class="content-card pending-approvals">
           <div class="card-header">
-            <h2>Recent Patients</h2>
+            <h2>Pending Approvals</h2>
             <div class="card-actions">
-              <button class="btn btn-text">View All</button>
+              <button class="btn btn-text" id="view-all-pending">View All</button>
             </div>
           </div>
-          <div class="patients-list">
-            <div class="patient-item">
-              <img src="assets/patients/patient1.jpg" alt="Patient" class="patient-avatar">
-              <div class="patient-info">
-                <h4>John Doe</h4>
-                <p>Last visit: June 15, 2023</p>
-                <div class="patient-meta">
-                  <span class="badge">Hypertension</span>
-                  <span class="badge">Type 2 Diabetes</span>
-                </div>
-              </div>
-              <div class="patient-actions">
-                <button class="btn btn-text">Message</button>
-                <button class="btn btn-primary">View Chart</button>
-              </div>
-            </div>
-            <div class="patient-item">
-              <img src="assets/patients/patient2.jpg" alt="Patient" class="patient-avatar">
-              <div class="patient-info">
-                <h4>Mary Smith</h4>
-                <p>Last visit: June 14, 2023</p>
-                <div class="patient-meta">
-                  <span class="badge">New Patient</span>
-                </div>
-              </div>
-              <div class="patient-actions">
-                <button class="btn btn-text">Message</button>
-                <button class="btn btn-primary">View Chart</button>
-              </div>
-            </div>
-            <div class="patient-item">
-              <img src="assets/patients/patient3.jpg" alt="Patient" class="patient-avatar">
-              <div class="patient-info">
-                <h4>Robert Johnson</h4>
-                <p>Last visit: June 10, 2023</p>
-                <div class="patient-meta">
-                  <span class="badge">Heart Disease</span>
-                  <span class="badge">High Cholesterol</span>
-                </div>
-              </div>
-              <div class="patient-actions">
-                <button class="btn btn-text">Message</button>
-                <button class="btn btn-primary">View Chart</button>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <!-- Pending Tasks -->
-        <section class="content-card pending-tasks">
-          <div class="card-header">
-            <h2>Pending Tasks</h2>
-            <div class="card-actions">
-              <button class="btn btn-text">View All</button>
-            </div>
-          </div>
-          <div class="tasks-list">
-            <div class="task-item">
-              <div class="task-icon">
-                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                  <path d="M10 2h4"></path>
-                  <path d="M12 2v6"></path>
-                  <rect x="4" y="10" width="16" height="12" rx="2"></rect>
-                  <path d="M9 15h6"></path>
-                </svg>
-              </div>
-              <div class="task-content">
-                <h4>Prescription Refill Request</h4>
-                <p>John Doe - Lisinopril 10mg</p>
-                <span class="task-time">Requested 2 hours ago</span>
-              </div>
-              <div class="task-actions">
-                <button class="btn btn-text">Deny</button>
-                <button class="btn btn-primary">Approve</button>
-              </div>
-            </div>
-            <div class="task-item">
-              <div class="task-icon">
-                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                  <path d="M22 12h-4l-3 9L9 3l-3 9H2"></path>
-                </svg>
-              </div>
-              <div class="task-content">
-                <h4>Lab Results Review</h4>
-                <p>Mary Smith - Complete Blood Count</p>
-                <span class="task-time">Received yesterday</span>
-              </div>
-              <div class="task-actions">
-                <button class="btn btn-text">View</button>
-                <button class="btn btn-primary">Sign Off</button>
-              </div>
-            </div>
-            <div class="task-item">
-              <div class="task-icon">
-                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                  <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
-                  <polyline points="14 2 14 8 20 8"></polyline>
-                  <line x1="16" y1="13" x2="8" y2="13"></line>
-                  <line x1="16" y1="17" x2="8" y2="17"></line>
-                  <polyline points="10 9 9 9 8 9"></polyline>
-                </svg>
-              </div>
-              <div class="task-content">
-                <h4>Chart Review</h4>
-                <p>Robert Johnson - Follow-up notes</p>
-                <span class="task-time">Due tomorrow</span>
-              </div>
-              <div class="task-actions">
-                <button class="btn btn-text">View</button>
-                <button class="btn btn-primary">Complete</button>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <!-- Quick Actions -->
-        <section class="content-card quick-actions">
-          <div class="card-header">
-            <h2>Quick Actions</h2>
-          </div>
-          <div class="actions-grid">
-            <button class="action-btn">
-              <div class="action-icon">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                  <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
-                  <circle cx="9" cy="7" r="4"></circle>
-                  <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
-                  <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
-                </svg>
-              </div>
-              <span>New Patient</span>
-            </button>
-            <button class="action-btn">
-              <div class="action-icon">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                  <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
-                  <line x1="16" y1="2" x2="16" y2="6"></line>
-                  <line x1="8" y1="2" x2="8" y2="6"></line>
-                  <line x1="3" y1="10" x2="21" y2="10"></line>
-                </svg>
-              </div>
-              <span>Schedule</span>
-            </button>
-            <button class="action-btn">
-              <div class="action-icon">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                  <path d="M10 2h4"></path>
-                  <path d="M12 2v6"></path>
-                  <rect x="4" y="10" width="16" height="12" rx="2"></rect>
-                  <path d="M9 15h6"></path>
-                </svg>
-              </div>
-              <span>Prescribe</span>
-            </button>
-            <button class="action-btn">
-              <div class="action-icon">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                  <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
-                  <polyline points="14 2 14 8 20 8"></polyline>
-                  <line x1="16" y1="13" x2="8" y2="13"></line>
-                  <line x1="16" y1="17" x2="8" y2="17"></line>
-                  <polyline points="10 9 9 9 8 9"></polyline>
-                </svg>
-              </div>
-              <span>Chart Note</span>
-            </button>
-            <button class="action-btn">
-              <div class="action-icon">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                  <path d="M22 12h-4l-3 9L9 3l-3 9H2"></path>
-                </svg>
-              </div>
-              <span>Order Labs</span>
-            </button>
-            <button class="action-btn">
-              <div class="action-icon">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                  <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
-                </svg>
-              </div>
-              <span>Messages</span>
-            </button>
+          <div class="approvals-list" id="pending-approvals-list">
+            <div class="loading-content" style="min-height: 150px;"></div>
           </div>
         </section>
       </div>
     </div>
   </main>
 
-  <!-- Modals -->
-  <!-- New Patient Modal -->
-  <div class="modal" id="new-patient-modal">
+  <!-- New Appointment Modal -->
+  <div class="modal" id="new-appointment-modal">
     <div class="modal-container landscape">
       <div class="modal-header">
-        <h2>
-          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
-            <circle cx="9" cy="7" r="4"></circle>
-            <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
-            <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
-          </svg>
-          New Patient Registration
-        </h2>
+        <h2>Schedule New Appointment</h2>
+        <button class="close-modal">&times;</button>
+      </div>
+      <div class="modal-body grid-layout">
+        <div class="form-card card-1">
+          <h3><i class="fas fa-calendar-plus"></i> Appointment Details</h3>
+          <form id="new-appointment-form">
+            <div class="form-group">
+              <label for="appointment-patient">Patient</label>
+              <div class="relative">
+                <select id="appointment-patient" name="appointment-patient" required>
+                  <option value="">Select Patient</option>
+                  <!-- Patients will be populated by JavaScript -->
+                </select>
+                <div class="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none">
+                  <i class="fas fa-user text-gray-400"></i>
+                </div>
+              </div>
+            </div>
+            
+            <div class="form-group">
+              <label for="appointment-type">Appointment Type</label>
+              <div class="relative">
+                <select id="appointment-type" name="appointment-type" required>
+                  <option value="">Select Type</option>
+                  <option value="checkup">Checkup</option>
+                  <option value="consultation">Consultation</option>
+                  <option value="followup">Follow-up</option>
+                  <option value="procedure">Procedure</option>
+                  <option value="urgent">Urgent Care</option>
+                </select>
+                <div class="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none">
+                  <i class="fas fa-stethoscope text-gray-400"></i>
+                </div>
+              </div>
+            </div>
+            
+            <div class="form-row">
+              <div class="form-group">
+                <label for="appointment-date">Date</label>
+                <div class="relative">
+                  <input type="date" id="appointment-date" name="appointment-date" required>
+                  <div class="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none">
+                    <i class="fas fa-calendar text-gray-400"></i>
+                  </div>
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="appointment-time">Time</label>
+                <div class="relative">
+                  <select id="appointment-time" name="appointment-time" required>
+                    <option value="">Select Time</option>
+                    <!-- Times will be populated by JavaScript -->
+                  </select>
+                  <div class="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none">
+                    <i class="fas fa-clock text-gray-400"></i>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+            <div class="form-group">
+              <label for="appointment-duration">Duration</label>
+              <div class="relative">
+                <select id="appointment-duration" name="appointment-duration" required>
+                  <option value="15">15 minutes</option>
+                  <option value="30" selected>30 minutes</option>
+                  <option value="45">45 minutes</option>
+                  <option value="60">60 minutes</option>
+                </select>
+                <div class="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none">
+                  <i class="fas fa-hourglass text-gray-400"></i>
+                </div>
+              </div>
+            </div>
+            
+            <div class="form-group">
+              <label for="appointment-reason">Reason</label>
+              <textarea id="appointment-reason" name="appointment-reason" rows="3" required></textarea>
+            </div>
+            
+            <div class="form-actions">
+              <button type="button" class="btn btn-text" id="cancel-appointment">
+                Cancel
+              </button>
+              <button type="submit" class="btn btn-primary">
+                <i class="fas fa-calendar-check"></i> Schedule Appointment
+              </button>
+            </div>
+          </form>
+        </div>
+        
+        <div class="info-card card-2">
+          <h3><i class="fas fa-user-circle"></i> Patient Information</h3>
+          <div class="patient-info-display" id="patient-info-display">
+            <div class="no-patient-selected">
+              <div class="text-center py-8">
+                <i class="fas fa-user-slash text-4xl text-gray-300 mb-4"></i>
+                <p class="text-gray-500">Select a patient to view their information</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="info-card card-3">
+          <h3><i class="fas fa-calendar-check"></i> Availability</h3>
+          <div class="availability-display" id="availability-display">
+            <div class="text-center py-8">
+              <i class="fas fa-calendar-alt text-4xl text-gray-300 mb-4"></i>
+              <p class="text-gray-500">Available time slots will appear here after selecting a date</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Appointment Detail Modal -->
+  <div class="modal" id="appointment-detail-modal">
+    <div class="modal-container">
+      <div class="modal-header">
+        <h2>Appointment Details</h2>
         <button class="close-modal">&times;</button>
       </div>
       <div class="modal-body">
-        <form id="new-patient-form">
-          <div class="form-row">
-            <div class="form-group">
-              <label for="patient-first-name">First Name</label>
-              <input type="text" id="patient-first-name" name="patient-first-name" required>
-            </div>
-            <div class="form-group">
-              <label for="patient-last-name">Last Name</label>
-              <input type="text" id="patient-last-name" name="patient-last-name" required>
-            </div>
+        <div class="appointment-detail-header">
+          <div class="appointment-status-badge" id="appointment-status-badge">
+            <span class="status confirmed">Confirmed</span>
           </div>
-          
-          <div class="form-row">
-            <div class="form-group">
-              <label for="patient-dob">Date of Birth</label>
-              <input type="date" id="patient-dob" name="patient-dob" required>
+          <h3 id="appointment-patient-name">John Doe</h3>
+          <p id="appointment-date-time">June 15, 2023 at 10:00 AM</p>
+          <p id="appointment-type-reason">Follow-up - Blood pressure check</p>
+        </div>
+        
+        <!-- View Switcher -->
+        <div class="view-switcher">
+          <button class="active" data-view="details">
+            <i class="fas fa-info-circle"></i> Details
+          </button>
+          <button data-view="patient">
+            <i class="fas fa-user"></i> Patient Info
+          </button>
+          <button data-view="notes">
+            <i class="fas fa-notes-medical"></i> Clinical Notes
+          </button>
+          <button data-view="history">
+            <i class="fas fa-history"></i> History
+          </button>
+        </div>
+        
+        <!-- Details View -->
+        <div class="view-content" id="details-view">
+          <div class="detail-section">
+            <h4>Appointment Information</h4>
+            <div class="detail-row">
+              <span class="detail-label">Status:</span>
+              <span id="appointment-status">Confirmed</span>
             </div>
-            <div class="form-group">
-              <label for="patient-gender">Gender</label>
-              <select id="patient-gender" name="patient-gender" required>
-                <option value="">Select</option>
-                <option value="male">Male</option>
-                <option value="female">Female</option>
-                <option value="other">Other</option>
-              </select>
+            <div class="detail-row">
+              <span class="detail-label">Duration:</span>
+              <span id="appointment-duration">30 minutes</span>
             </div>
-          </div>
-          
-          <div class="form-group">
-            <label for="patient-email">Email</label>
-            <input type="email" id="patient-email" name="patient-email" required>
-          </div>
-          
-          <div class="form-group">
-            <label for="patient-phone">Phone Number</label>
-            <input type="tel" id="patient-phone" name="patient-phone" required>
-          </div>
-          
-          <div class="form-group">
-            <label for="patient-address">Address</label>
-            <input type="text" id="patient-address" name="patient-address" required>
-          </div>
-          
-          <div class="form-row">
-            <div class="form-group">
-              <label for="patient-city">City</label>
-              <input type="text" id="patient-city" name="patient-city" required>
+            <div class="detail-row">
+              <span class="detail-label">Location:</span>
+              <span id="appointment-location">Exam Room 3</span>
             </div>
-            <div class="form-group">
-              <label for="patient-zip">Postal Code</label>
-              <input type="text" id="patient-zip" name="patient-zip" required>
+            <div class="detail-row">
+              <span class="detail-label">Created:</span>
+              <span id="appointment-created">June 10, 2023</span>
+            </div>
+            <div class="detail-row">
+              <span class="detail-label">Last Updated:</span>
+              <span id="appointment-updated">June 12, 2023</span>
             </div>
           </div>
           
-          <div class="form-group">
-            <label for="patient-insurance">Insurance Provider</label>
-            <select id="patient-insurance" name="patient-insurance">
-              <option value="">Select</option>
-              <option value="aetna">Aetna</option>
-              <option value="bluecross">Blue Cross Blue Shield</option>
-              <option value="cigna">Cigna</option>
-              <option value="united">UnitedHealthcare</option>
-            </select>
+          <div class="appointment-actions">
+            <button class="btn btn-success" id="confirm-appointment-btn">
+              <i class="fas fa-check"></i> Confirm
+            </button>
+            <button class="btn btn-warning" id="reschedule-btn">
+              <i class="fas fa-calendar-alt"></i> Reschedule
+            </button>
+            <button class="btn btn-danger" id="cancel-appointment-btn">
+              <i class="fas fa-times"></i> Cancel
+            </button>
+            <button class="btn btn-primary" id="start-visit-btn">
+              <i class="fas fa-play"></i> Start Visit
+            </button>
+          </div>
+        </div>
+        
+        <!-- Patient Info View -->
+        <div class="view-content" id="patient-view" style="display:none;">
+          <div class="detail-section">
+            <h4>Patient Information</h4>
+            <div class="detail-row">
+              <span class="detail-label">Age:</span>
+              <span id="patient-age">38 years</span>
+            </div>
+            <div class="detail-row">
+              <span class="detail-label">Gender:</span>
+              <span id="patient-gender">Male</span>
+            </div>
+            <div class="detail-row">
+              <span class="detail-label">Date of Birth:</span>
+              <span id="patient-dob">January 15, 1985</span>
+            </div>
+            <div class="detail-row">
+              <span class="detail-label">Phone:</span>
+              <span id="patient-phone">(555) 123-4567</span>
+            </div>
+            <div class="detail-row">
+              <span class="detail-label">Email:</span>
+              <span id="patient-email">john.doe@example.com</span>
+            </div>
+            <div class="detail-row">
+              <span class="detail-label">Address:</span>
+              <span id="patient-address">123 Main St, Anytown, USA</span>
+            </div>
           </div>
           
-          <div class="form-group">
-            <label for="patient-notes">Initial Notes</label>
-            <textarea id="patient-notes" name="patient-notes" rows="4"></textarea>
+          <div class="detail-section">
+            <h4>Medical Information</h4>
+            <div class="detail-row">
+              <span class="detail-label">Conditions:</span>
+              <span id="patient-conditions">Hypertension, Type 2 Diabetes</span>
+            </div>
+            <div class="detail-row">
+              <span class="detail-label">Allergies:</span>
+              <span id="patient-allergies">Penicillin</span>
+            </div>
+            <div class="detail-row">
+              <span class="detail-label">Medications:</span>
+              <span id="patient-medications">Lisinopril, Metformin</span>
+            </div>
+            <div class="detail-row">
+              <span class="detail-label">Last Visit:</span>
+              <span id="patient-last-visit">May 15, 2023</span>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Clinical Notes View -->
+        <div class="view-content" id="notes-view" style="display:none;">
+          <div class="detail-section">
+            <h4>Appointment Notes</h4>
+            <div id="appointment-notes">
+              <div class="bg-gray-50 p-4 rounded-md">
+                <p>Patient needs blood pressure check after medication adjustment.</p>
+                <p class="text-sm text-gray-500 mt-2">- Dr. Johnson, June 12, 2023</p>
+              </div>
+            </div>
+          </div>
+          
+          <div class="detail-section">
+            <h4>Add Notes</h4>
+            <div class="form-group">
+              <textarea id="doctor-notes" rows="5" placeholder="Add your clinical notes here..."></textarea>
+            </div>
+            <div class="form-actions">
+              <button class="btn btn-primary" id="save-notes-btn">
+                <i class="fas fa-save"></i> Save Notes
+              </button>
+            </div>
+          </div>
+        </div>
+        
+        <!-- History View -->
+        <div class="view-content" id="history-view" style="display:none;">
+          <div class="detail-section">
+            <h4>Appointment History</h4>
+            <div class="space-y-4">
+              <div class="history-item">
+                <div class="flex justify-between">
+                  <span class="font-medium">Follow-up Visit</span>
+                  <span class="text-sm text-gray-500">May 15, 2023</span>
+                </div>
+                <p class="text-sm text-gray-600">Blood pressure check, medication adjustment</p>
+              </div>
+              <div class="history-item">
+                <div class="flex justify-between">
+                  <span class="font-medium">Annual Physical</span>
+                  <span class="text-sm text-gray-500">March 10, 2023</span>
+                </div>
+                <p class="text-sm text-gray-600">Routine checkup, lab work ordered</p>
+              </div>
+              <div class="history-item">
+                <div class="flex justify-between">
+                  <span class="font-medium">Consultation</span>
+                  <span class="text-sm text-gray-500">January 5, 2023</span>
+                </div>
+                <p class="text-sm text-gray-600">Diabetes management discussion</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Patient Visit Modal -->
+  <div class="modal" id="patient-visit-modal">
+    <div class="modal-container landscape">
+      <div class="modal-header">
+        <h2>Patient Visit - <span id="visit-patient-name">John Doe</span></h2>
+        <button class="close-modal">&times;</button>
+      </div>
+      <div class="modal-body grid-layout">
+        <div class="form-card card-1">
+          <h3><i class="fas fa-heartbeat"></i> Vital Signs</h3>
+          <form id="vital-signs-form">
+            <div class="form-row">
+              <div class="form-group">
+                <label for="blood-pressure">Blood Pressure</label>
+                <div class="relative">
+                  <input type="text" id="blood-pressure" placeholder="120/80">
+                  <div class="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none">
+                    <span class="text-gray-400">mmHg</span>
+                  </div>
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="heart-rate">Heart Rate</label>
+                <div class="relative">
+                  <input type="number" id="heart-rate" placeholder="72">
+                  <div class="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none">
+                    <span class="text-gray-400">bpm</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+            <div class="form-row">
+              <div class="form-group">
+                <label for="temperature">Temperature</label>
+                <div class="relative">
+                  <input type="number" id="temperature" placeholder="98.6">
+                  <div class="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none">
+                    <span class="text-gray-400">°F</span>
+                  </div>
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="oxygen-saturation">Oxygen Saturation</label>
+                <div class="relative">
+                  <input type="number" id="oxygen-saturation" placeholder="98">
+                  <div class="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none">
+                    <span class="text-gray-400">%</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+            <div class="form-row">
+              <div class="form-group">
+                <label for="height">Height</label>
+                <div class="relative">
+                  <input type="number" id="height" placeholder="68">
+                  <div class="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none">
+                    <span class="text-gray-400">in</span>
+                  </div>
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="weight">Weight</label>
+                <div class="relative">
+                  <input type="number" id="weight" placeholder="175">
+                  <div class="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none">
+                    <span class="text-gray-400">lbs</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+            <div class="form-group">
+              <label for="bmi">BMI</label>
+              <input type="text" id="bmi" readonly>
+            </div>
+            
+            <div class="form-actions">
+              <button type="button" class="btn btn-primary" id="save-vitals-btn">
+                <i class="fas fa-save"></i> Save Vitals
+              </button>
+            </div>
+          </form>
+        </div>
+        
+        <div class="form-card card-2">
+          <h3><i class="fas fa-notes-medical"></i> Clinical Notes</h3>
+          <form id="clinical-notes-form">
+            <div class="form-group">
+              <label for="subjective-notes">Subjective</label>
+              <textarea id="subjective-notes" rows="3" placeholder="Patient's reported symptoms..."></textarea>
+            </div>
+            
+            <div class="form-group">
+              <label for="objective-notes">Objective</label>
+              <textarea id="objective-notes" rows="3" placeholder="Observations and exam findings..."></textarea>
+            </div>
+            
+            <div class="form-group">
+              <label for="assessment-notes">Assessment</label>
+              <textarea id="assessment-notes" rows="3" placeholder="Diagnosis or assessment..."></textarea>
+            </div>
+            
+            <div class="form-group">
+              <label for="plan-notes">Plan</label>
+              <textarea id="plan-notes" rows="3" placeholder="Treatment plan..."></textarea>
+            </div>
+            
+            <div class="form-actions">
+              <button type="button" class="btn btn-primary" id="save-clinical-notes-btn">
+                <i class="fas fa-save"></i> Save Notes
+              </button>
+            </div>
+          </form>
+        </div>
+        
+        <div class="info-card card-3">
+          <h3><i class="fas fa-user"></i> Patient Summary</h3>
+          <div class="patient-summary" id="patient-summary">
+            <div class="space-y-3">
+              <div class="flex justify-between">
+                <span class="text-gray-600">Age:</span>
+                <span class="font-medium">38 years</span>
+              </div>
+              <div class="flex justify-between">
+                <span class="text-gray-600">Gender:</span>
+                <span class="font-medium">Male</span>
+              </div>
+              <div class="flex justify-between">
+                <span class="text-gray-600">Last Visit:</span>
+                <span class="font-medium">May 15, 2023</span>
+              </div>
+              <div class="flex justify-between">
+                <span class="text-gray-600">Conditions:</span>
+                <span class="font-medium">Hypertension, Type 2 Diabetes</span>
+              </div>
+              <div class="flex justify-between">
+                <span class="text-gray-600">Allergies:</span>
+                <span class="font-medium">Penicillin</span>
+              </div>
+            </div>
+          </div>
+          
+          <h3><i class="fas fa-prescription"></i> Prescriptions</h3>
+          <div class="prescriptions-list" id="prescriptions-list">
+            <div class="prescription-item">
+              <div class="prescription-info">
+                <h4>Lisinopril</h4>
+                <p>10mg daily for hypertension</p>
+              </div>
+              <div class="prescription-actions">
+                <button class="btn btn-text">
+                  <i class="fas fa-edit"></i>
+                </button>
+              </div>
+            </div>
+            <div class="prescription-item">
+              <div class="prescription-info">
+                <h4>Metformin</h4>
+                <p>500mg twice daily for diabetes</p>
+              </div>
+              <div class="prescription-actions">
+                <button class="btn btn-text">
+                  <i class="fas fa-edit"></i>
+                </button>
+              </div>
+            </div>
           </div>
           
           <div class="form-actions">
-            <button type="button" class="btn btn-text">Cancel</button>
-            <button type="submit" class="btn btn-primary">Register Patient</button>
+            <button class="btn btn-primary" id="prescribe-btn">
+              <i class="fas fa-plus"></i> New Prescription
+            </button>
+            <button class="btn btn-secondary" id="complete-visit-btn">
+              <i class="fas fa-check-circle"></i> Complete Visit
+            </button>
           </div>
-        </form>
+        </div>
       </div>
     </div>
   </div>
 
   <!-- Prescription Modal -->
   <div class="modal" id="prescription-modal">
-    <div class="modal-container landscape">
+    <div class="modal-container">
       <div class="modal-header">
-        <h2>
-          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M10 2h4"></path>
-            <path d="M12 2v6"></path>
-            <rect x="4" y="10" width="16" height="12" rx="2"></rect>
-            <path d="M9 15h6"></path>
-          </svg>
-          New Prescription
-        </h2>
+        <h2>New Prescription</h2>
         <button class="close-modal">&times;</button>
       </div>
-      <div class="modal-body grid-layout">
-        <div class="form-card card-1">
-          <h3>Patient Information</h3>
-          <div class="patient-select">
-            <label for="prescription-patient">Select Patient</label>
-            <select id="prescription-patient" name="prescription-patient" required>
-              <option value="">Select Patient</option>
-              <option value="john-doe">John Doe (ID: MC123456)</option>
-              <option value="mary-smith">Mary Smith (ID: MC789012)</option>
-              <option value="robert-johnson">Robert Johnson (ID: MC345678)</option>
-            </select>
-          </div>
-          
-          <div class="patient-info-display">
-            <div class="patient-details">
-              <h4>John Doe</h4>
-              <p>DOB: 06/15/1985 (38 years)</p>
-              <p>Allergies: Penicillin, Sulfa</p>
-              <p>Conditions: Hypertension, Type 2 Diabetes</p>
-            </div>
-          </div>
-        </div>
-        
-        <div class="form-card card-2">
-          <h3>Medication Details</h3>
+      <div class="modal-body">
+        <form id="prescription-form">
           <div class="form-group">
             <label for="medication-name">Medication Name</label>
-            <input type="text" id="medication-name" name="medication-name" list="medications" required>
-            <datalist id="medications">
-              <option value="Lisinopril 10mg">
-              <option value="Amlodipine 5mg">
-              <option value="Metformin 500mg">
-              <option value="Atorvastatin 20mg">
-            </datalist>
+            <input type="text" id="medication-name" required>
           </div>
           
           <div class="form-row">
             <div class="form-group">
               <label for="medication-dosage">Dosage</label>
-              <input type="text" id="medication-dosage" name="medication-dosage" required>
+              <input type="text" id="medication-dosage" required>
             </div>
             <div class="form-group">
               <label for="medication-frequency">Frequency</label>
-              <select id="medication-frequency" name="medication-frequency" required>
-                <option value="">Select</option>
-                <option value="once-daily">Once daily</option>
-                <option value="twice-daily">Twice daily</option>
-                <option value="three-times-daily">Three times daily</option>
-                <option value="as-needed">As needed</option>
+              <select id="medication-frequency" required>
+                <option value="">Select Frequency</option>
+                <option value="once">Once daily</option>
+                <option value="twice">Twice daily</option>
+                <option value="three">Three times daily</option>
+                <option value="as_needed">As needed</option>
               </select>
             </div>
           </div>
           
           <div class="form-group">
             <label for="medication-duration">Duration</label>
-            <select id="medication-duration" name="medication-duration" required>
-              <option value="">Select</option>
-              <option value="7-days">7 days</option>
-              <option value="14-days">14 days</option>
-              <option value="30-days">30 days</option>
-              <option value="90-days">90 days</option>
-              <option value="ongoing">Ongoing</option>
+            <select id="medication-duration" required>
+              <option value="">Select Duration</option>
+              <option value="7">7 days</option>
+              <option value="14">14 days</option>
+              <option value="30">30 days</option>
+              <option value="90">90 days</option>
+              <option value="indefinite">Indefinite</option>
             </select>
           </div>
           
           <div class="form-group">
-            <label for="medication-refills">Refills</label>
-            <select id="medication-refills" name="medication-refills">
-              <option value="0">No refills</option>
-              <option value="1">1 refill</option>
-              <option value="2">2 refills</option>
-              <option value="3">3 refills</option>
-            </select>
-          </div>
-          
-          <div class="form-group">
-            <label for="medication-instructions">Special Instructions</label>
-            <textarea id="medication-instructions" name="medication-instructions" rows="3"></textarea>
-          </div>
-        </div>
-        
-        <div class="form-card card-3">
-          <h3>Pharmacy Information</h3>
-          <div class="form-group">
-            <label for="pharmacy-select">Select Pharmacy</label>
-            <select id="pharmacy-select" name="pharmacy-select">
-              <option value="">Select Pharmacy</option>
-              <option value="cvs-123">CVS Pharmacy - 123 Main St</option>
-              <option value="walgreens-456">Walgreens - 456 Oak Ave</option>
-              <option value="other">Other (specify below)</option>
-            </select>
-          </div>
-          
-          <div class="form-group">
-            <label for="pharmacy-notes">Pharmacy Notes</label>
-            <textarea id="pharmacy-notes" name="pharmacy-notes" rows="2"></textarea>
+            <label for="medication-instructions">Instructions</label>
+            <textarea id="medication-instructions" rows="3"></textarea>
           </div>
           
           <div class="form-actions">
-            <button type="button" class="btn btn-text">Cancel</button>
-            <button type="submit" class="btn btn-primary">Send Prescription</button>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- Quick Notes Modal -->
-  <div class="modal" id="quick-notes-modal">
-    <div class="modal-container">
-      <div class="modal-header">
-        <h2>
-          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M12 19l7-7 3 3-7 7-3-3z"></path>
-            <path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z"></path>
-            <path d="M2 2l7.586 7.586"></path>
-            <circle cx="11" cy="11" r="2"></circle>
-          </svg>
-          Quick Notes
-        </h2>
-        <button class="close-modal">&times;</button>
-      </div>
-      <div class="modal-body">
-        <form id="quick-notes-form">
-          <div class="form-group">
-            <label for="note-patient">Patient</label>
-            <select id="note-patient" name="note-patient">
-              <option value="">Select Patient</option>
-              <option value="john-doe">John Doe</option>
-              <option value="mary-smith">Mary Smith</option>
-              <option value="robert-johnson">Robert Johnson</option>
-            </select>
-          </div>
-          
-          <div class="form-group">
-            <label for="note-type">Note Type</label>
-            <select id="note-type" name="note-type">
-              <option value="general">General Note</option>
-              <option value="followup">Follow-up Note</option>
-              <option value="phone-call">Phone Call Summary</option>
-              <option value="lab-review">Lab Review</option>
-            </select>
-          </div>
-          
-          <div class="form-group">
-            <label for="note-content">Note Content</label>
-            <textarea id="note-content" name="note-content" rows="10" placeholder="Enter your notes here..."></textarea>
-          </div>
-          
-          <div class="form-actions">
-            <button type="button" class="btn btn-text">Cancel</button>
-            <button type="submit" class="btn btn-primary">Save Note</button>
+            <button type="button" class="btn btn-text" id="cancel-prescription">
+              Cancel
+            </button>
+            <button type="submit" class="btn btn-primary">
+              <i class="fas fa-save"></i> Save Prescription
+            </button>
           </div>
         </form>
       </div>
     </div>
   </div>
 
-  <!-- Patient Chart Modal -->
-  <div class="modal" id="patient-chart-modal">
-    <div class="modal-container landscape">
-      <div class="modal-header">
-        <h2>
-          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
-            <polyline points="14 2 14 8 20 8"></polyline>
-            <line x1="16" y1="13" x2="8" y2="13"></line>
-            <line x1="16" y1="17" x2="8" y2="17"></line>
-            <polyline points="10 9 9 9 8 9"></polyline>
-          </svg>
-          Patient Chart: John Doe
-        </h2>
-        <button class="close-modal">&times;</button>
-      </div>
-      <div class="modal-body">
-        <div class="chart-tabs">
-          <button class="tab-btn active" data-tab="overview">Overview</button>
-          <button class="tab-btn" data-tab="history">Medical History</button>
-          <button class="tab-btn" data-tab="medications">Medications</button>
-          <button class="tab-btn" data-tab="allergies">Allergies</button>
-          <button class="tab-btn" data-tab="labs">Lab Results</button>
-          <button class="tab-btn" data-tab="notes">Clinical Notes</button>
-        </div>
-        
-        <div class="tab-content active" id="overview-tab">
-          <div class="chart-overview">
-            <div class="patient-summary">
-              <div class="patient-photo">
-                <img src="assets/patients/patient1.jpg" alt="John Doe">
-              </div>
-              <div class="patient-details">
-                <h3>John Doe</h3>
-                <p>DOB: 06/15/1985 (38 years)</p>
-                <p>Gender: Male</p>
-                <p>Blood Type: A+</p>
-                <p>Last Visit: June 15, 2023</p>
-                <p>Next Appointment: July 15, 2023</p>
-              </div>
-            </div>
-            
-            <div class="patient-conditions">
-              <h4>Active Conditions</h4>
-              <div class="conditions-list">
-                <div class="condition-item">
-                  <h5>Hypertension</h5>
-                  <p>Diagnosed: 2018</p>
-                  <p>Status: Active</p>
-                </div>
-                <div class="condition-item">
-                  <h5>Type 2 Diabetes</h5>
-                  <p>Diagnosed: 2020</p>
-                  <p>Status: Active</p>
-                </div>
-              </div>
-            </div>
-            
-            <div class="patient-vitals">
-              <h4>Recent Vitals</h4>
-              <div class="vitals-grid">
-                <div class="vital-item">
-                  <span class="vital-label">Blood Pressure</span>
-                  <span class="vital-value">132/82 mmHg</span>
-                  <span class="vital-date">06/15/2023</span>
-                </div>
-                <div class="vital-item">
-                  <span class="vital-label">Heart Rate</span>
-                  <span class="vital-value">72 bpm</span>
-                  <span class="vital-date">06/15/2023</span>
-                </div>
-                <div class="vital-item">
-                  <span class="vital-label">Weight</span>
-                  <span class="vital-value">185 lbs</span>
-                  <span class="vital-date">06/15/2023</span>
-                </div>
-                <div class="vital-item">
-                  <span class="vital-label">BMI</span>
-                  <span class="vital-value">28.4</span>
-                  <span class="vital-date">06/15/2023</span>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        
-        <div class="tab-content" id="history-tab">
-          <div class="history-timeline">
-            <div class="timeline-item">
-              <div class="timeline-date">June 15, 2023</div>
-              <div class="timeline-content">
-                <h5>Follow-up Visit</h5>
-                <p>Blood pressure improved with current medication regimen. Recommended dietary changes and follow-up in 1 month.</p>
-                <p class="timeline-provider">Dr. Sarah Johnson</p>
-              </div>
-            </div>
-            <div class="timeline-item">
-              <div class="timeline-date">May 15, 2023</div>
-              <div class="timeline-content">
-                <h5>Annual Physical</h5>
-                <p>Comprehensive physical exam. Blood work ordered to monitor diabetes and cholesterol levels.</p>
-                <p class="timeline-provider">Dr. Sarah Johnson</p>
-              </div>
-            </div>
-          </div>
-        </div>
-        
-        <div class="tab-content" id="medications-tab">
-          <div class="medications-list">
-            <div class="medication-item">
-              <h5>Lisinopril 10mg</h5>
-              <p>Take 1 tablet daily in the morning</p>
-              <p>Prescribed: 05/15/2023 | Refills: 2 remaining</p>
-            </div>
-            <div class="medication-item">
-              <h5>Metformin 500mg</h5>
-              <p>Take 1 tablet twice daily with meals</p>
-              <p>Prescribed: 05/15/2023 | Refills: 1 remaining</p>
-            </div>
-          </div>
-        </div>
-      </div>
+  <!-- Loading Overlay -->
+  <div id="loading-overlay" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50" style="display: none;">
+    <div class="bg-white p-6 rounded-lg shadow-xl flex items-center">
+      <div class="animate-spin rounded-full h-8 w-8 border-b-2 border-primary-600 mr-3"></div>
+      <span>Loading...</span>
     </div>
   </div>
 
-  <script src="/public/js/doctor.js"></script>
+  <script src="frontend-config.js"></script>
+
+  <!-- Adjustments for Doctor's Portal functionality -->
+<script>function openPatientVisitModal() {
+  const modal = document.getElementById('patient-visit-modal');
+  const nameSpan = document.getElementById('visit-patient-name');
+
+  if (!modal || !nameSpan) {
+    console.error('Modal or patient name span not found.');
+    return;
+  }
+
+  if (!selectedAppointment || !selectedAppointment.patientId) {
+    console.error('Selected appointment or patient ID missing.');
+    return;
+  }
+
+  const patient = patientsCache[selectedAppointment.patientId];
+  if (!patient) {
+    console.error('Patient data not found for ID:', selectedAppointment.patientId);
+    return;
+  }
+
+  nameSpan.textContent = patient.fullName || 'Unknown Patient';
+
+  // Populate other sections (optional: patient summary, vitals, notes, etc.)
+
+  modal.classList.add('show'); // or however you trigger visibility
+}
+</script>
+
+<!-- Patch calendar events rendering -->
+<script>
+function refreshCalendarEvents() {
+  if (!calendar) return;
+  calendar.removeAllEvents();
+  calendar.addEventSource(appointments.map(appt => ({
+    id: appt._id,
+    title: `${appt.patientName}`,
+    start: appt.date,
+    end: new Date(new Date(appt.date).getTime() + appt.duration * 60000),
+    extendedProps: {
+      patientId: appt.patientId,
+      type: appt.type,
+      reason: appt.reason,
+      status: appt.status,
+      location: appt.location,
+      notes: appt.notes
+    }
+  })));
+  calendar.refetchEvents();
+}
+</script>
+
+
+  <!-- FullCalendar JS -->
+  <script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.11.3/main.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.1/chart.min.js"></script>
+<script>
+// Complete Doctor Portal JavaScript
+const apiService = {
+  baseUrl: 'http://localhost:8000',
+  
+  async makeRequest(url, options = {}) {
+    try {
+      const response = await fetch(url, {
+        ...options,
+        mode: 'cors',
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json',
+          ...(options.headers || {})
+        }
+      });
+
+      if (!response.ok) {
+        const errorText = await response.text();
+        throw new Error(`API error: ${response.status} ${response.statusText}`);
+      }
+
+      return await response.json();
+    } catch (error) {
+      console.error('API request error:', error);
+      throw error;
+    }
+  },
+  
+  getCurrentUser() {
+    try {
+      const userData = sessionStorage.getItem('user');
+      if (!userData) throw new Error('No user data found');
+      return JSON.parse(userData);
+    } catch (error) {
+      console.error('Error getting current user:', error);
+      throw new Error('Session expired. Please login again.');
+    }
+  },
+
+  async getCurrentDoctor() {
+    const user = this.getCurrentUser();
+    return this.makeRequest(`${this.baseUrl}/user?id=${user._id}`);
+  },
+
+  async getDoctorAppointments() {
+    const user = this.getCurrentUser();
+    return this.makeRequest(`${this.baseUrl}/api/appointments?doctorId=${user._id}`);
+  },
+  
+
+  async createAppointment(appointmentData) {
+    const user = this.getCurrentUser();
+    return this.makeRequest(`${this.baseUrl}/api/appointments`, {
+      method: 'POST',
+      body: JSON.stringify({ ...appointmentData, doctorId: user._id })
+    });
+  },
+
+  async updateAppointment(id, appointmentData) {
+    return this.makeRequest(`${this.baseUrl}/api/appointments/${id}`, {
+      method: 'PUT',
+      body: JSON.stringify(appointmentData)
+    });
+  },
+
+  async cancelAppointment(id) {
+    return this.makeRequest(`${this.baseUrl}/api/appointments/${id}`, {
+      method: 'DELETE'
+    });
+  },
+
+  async getPatientById(patientId) {
+    return this.makeRequest(`${this.baseUrl}/user?id=${patientId}`);
+  }
+};
+
+
+document.addEventListener('DOMContentLoaded', async function() {
+  // Global variables
+  let currentView = 'week';
+  let selectedPatient = null;
+  let selectedAppointment = null;
+  let appointments = [];
+  let pendingApprovals = [];
+  let patientsCache = {};
+  let calendar;
+
+  
+  // Helper functions
+  function convertTimeTo24Hour(timeStr) {
+    if (!timeStr) return [0, 0];
+    const [time, modifier] = timeStr.split(' ');
+    let [hours, minutes] = time.split(':');
+    
+    if (hours === '12') hours = '00';
+    if (modifier === 'PM') hours = parseInt(hours, 10) + 12;
+    
+    return [parseInt(hours, 10), parseInt(minutes, 10)];
+  }
+
+  function calculateAge(dob) {
+    if (!dob) return 'N/A';
+    const birthDate = new Date(dob);
+    const diff = Date.now() - birthDate.getTime();
+    const ageDate = new Date(diff);
+    return Math.abs(ageDate.getUTCFullYear() - 1970);
+  }
+
+  function showLoading() {
+    document.getElementById('loading-overlay').style.display = 'flex';
+  }
+
+  function hideLoading() {
+    document.getElementById('loading-overlay').style.display = 'none';
+  }
+
+  function closeAllModals() {
+    document.querySelectorAll('.modal').forEach(modal => {
+      modal.style.display = 'none';
+    });
+  }
+
+  function showError(message, retryCallback = null) {
+    const errorDiv = document.getElementById('error-display') || document.createElement('div');
+    errorDiv.id = 'error-display';
+    errorDiv.style.cssText = `
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      padding: 15px;
+      background: #ffebee;
+      border: 1px solid #ef9a9a;
+      border-radius: 4px;
+      z-index: 1000;
+      max-width: 300px;
+    `;
+    
+    errorDiv.innerHTML = `
+      <p style="margin: 0 0 10px 0; color: #c62828;">${message}</p>
+      ${retryCallback ? `<button onclick="(${retryCallback})()" style="margin-right: 10px;">Retry</button>` : ''}
+      <button onclick="this.parentElement.remove()">Dismiss</button>
+    `;
+    
+    if (!document.getElementById('error-display')) {
+      document.body.appendChild(errorDiv);
+    }
+  }
+
+  // Main initialization
+  async function initPage() {
+    try {
+      showLoading();
+      
+      // Initialize data
+      await initializeData();
+      
+      // Setup UI
+      setupEventListeners();
+      initCalendar();
+      loadTodayAppointments();
+      loadPendingApprovals();
+      updateDashboardStats();
+      
+      hideLoading();
+    } catch (error) {
+      hideLoading();
+      console.error('Initialization failed:', error);
+      showError(`Initialization failed: ${error.message}`, () => {
+        window.location.reload();
+      });
+      
+      if (error.message.includes('authenticat') || error.message.includes('session')) {
+        setTimeout(() => {
+          window.location.href = '/login.html';
+        }, 3000);
+      }
+    }
+  }
+
+  async function initializeData() {
+    try {
+      const doctor = await apiService.getCurrentDoctor();
+      const appointmentsData = await apiService.getDoctorAppointments();
+
+      if (!appointmentsData || !Array.isArray(appointmentsData)) {
+        throw new Error("Invalid appointments data received");
+      }
+
+      // Enrich appointments with patient names
+      appointments = await Promise.all(appointmentsData.map(async appt => {
+        if (!appt || !appt.patientId) {
+          console.warn('Skipping invalid appointment:', appt);
+          return null;
+        }
+
+        try {
+          const patient = await apiService.getPatientById(appt.patientId);
+          return {
+            ...appt,
+            patientName: patient ? patient.fullName : 'Unknown Patient'
+          };
+        } catch (error) {
+          console.warn('Error fetching patient for appointment:', appt._id, error);
+          return {
+            ...appt,
+            patientName: 'Unknown Patient'
+          };
+        }
+      }));
+
+      // Filter out nulls
+      appointments = appointments.filter(appt => appt && appt.status);
+
+      // Get pending approvals
+      pendingApprovals = appointments.filter(appt => appt.status === 'pending');
+
+    } catch (error) {
+      console.error('Data initialization error:', error);
+      throw new Error('Failed to load initial data. Please try again.');
+    }
+  }
+
+  function updateDashboardStats() {
+    const today = new Date();
+    today.setHours(0, 0, 0, 0);
+    const tomorrow = new Date(today);
+    tomorrow.setDate(tomorrow.getDate() + 1);
+    
+    const todaysAppointments = appointments.filter(appt => {
+      const apptDate = new Date(appt.date);
+      return apptDate >= today && apptDate < tomorrow;
+    }).length;
+
+    const yesterday = new Date(today);
+    yesterday.setDate(yesterday.getDate() - 1);
+    const yesterdaysAppointments = appointments.filter(appt => {
+      const apptDate = new Date(appt.date);
+      return apptDate >= yesterday && apptDate < today;
+    }).length;
+
+    document.querySelector('.stat-card:nth-child(1) .stat-card-value').textContent = todaysAppointments;
+    document.querySelector('.stat-card:nth-child(1) .stat-card-change span').textContent = 
+      `${todaysAppointments - yesterdaysAppointments} from yesterday`;
+
+    document.querySelector('.stat-card:nth-child(2) .stat-card-value').textContent = pendingApprovals.length;
+    document.querySelector('.stat-card:nth-child(3) .stat-card-value').textContent = 
+      [...new Set(appointments.map(a => a.patientId))].length;
+  }
+
+  function setupEventListeners() {
+    // User menu dropdown
+    const userMenuBtn = document.getElementById('user-menu-btn');
+    const userDropdown = document.querySelector('.user-dropdown');
+    
+    userMenuBtn.addEventListener('click', function(e) {
+      e.stopPropagation();
+      userDropdown.style.display = userDropdown.style.display === 'block' ? 'none' : 'block';
+    });
+    
+    document.addEventListener('click', function() {
+      userDropdown.style.display = 'none';
+    });
+
+    // New appointment button
+    document.getElementById('new-appointment-btn').addEventListener('click', openNewAppointmentModal);
+    
+    // Calendar view buttons
+    const viewButtons = {
+      'today-btn': () => { calendar.today(); updateCalendarViewButtons('today'); },
+      'day-view-btn': () => { calendar.changeView('timeGridDay'); updateCalendarViewButtons('day'); },
+      'week-view-btn': () => { calendar.changeView('timeGridWeek'); updateCalendarViewButtons('week'); },
+      'month-view-btn': () => { calendar.changeView('dayGridMonth'); updateCalendarViewButtons('month'); },
+      'list-view-btn': () => { calendar.changeView('listWeek'); updateCalendarViewButtons('list'); }
+    };
+    
+    Object.entries(viewButtons).forEach(([id, handler]) => {
+      document.getElementById(id).addEventListener('click', handler);
+    });
+
+    // Refresh appointments button
+    document.getElementById('refresh-appointments').addEventListener('click', loadTodayAppointments);
+
+    // Modal close buttons
+    document.querySelectorAll('.close-modal').forEach(btn => {
+      btn.addEventListener('click', closeAllModals);
+    });
+
+    // New appointment form
+    document.getElementById('new-appointment-form').addEventListener('submit', function(e) {
+      e.preventDefault();
+      scheduleNewAppointment();
+    });
+
+    // Appointment detail modal buttons
+    document.getElementById('confirm-appointment-btn').addEventListener('click', confirmAppointment);
+    document.getElementById('reschedule-btn').addEventListener('click', rescheduleAppointment);
+    document.getElementById('cancel-appointment-btn').addEventListener('click', cancelAppointment);
+    document.getElementById('start-visit-btn').addEventListener('click', startPatientVisit);
+
+    // View switcher in appointment detail
+    document.querySelectorAll('.view-switcher button').forEach(btn => {
+      btn.addEventListener('click', function() {
+        const view = this.getAttribute('data-view');
+        switchAppointmentDetailView(view);
+      });
+    });
+
+    // Save notes button
+    document.getElementById('save-notes-btn').addEventListener('click', saveAppointmentNotes);
+
+    // Patient visit modal buttons
+    document.getElementById('save-vitals-btn').addEventListener('click', saveVitalSigns);
+    document.getElementById('save-clinical-notes-btn').addEventListener('click', saveClinicalNotes);
+    document.getElementById('complete-visit-btn').addEventListener('click', completePatientVisit);
+    document.getElementById('prescribe-btn').addEventListener('click', openPrescriptionModal);
+
+    // BMI calculation
+    document.getElementById('height').addEventListener('change', calculateBMI);
+    document.getElementById('weight').addEventListener('change', calculateBMI);
+  }
+
+  function initCalendar() {
+    const calendarEl = document.getElementById('calendar');
+    
+    // Add calendar styles
+    const style = document.createElement('style');
+    style.textContent = `
+      .fc { font-family: 'Inter', sans-serif; }
+      .fc-event { 
+        border: none; 
+        border-radius: 6px; 
+        padding: 2px 4px;
+        cursor: pointer;
+        transition: all 0.2s;
+      }
+      .fc-event:hover { transform: translateY(-2px); box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
+      .fc-event.confirmed { background-color: #e3f2fd; color: #1976d2; border-left: 3px solid #1976d2; }
+      .fc-event.pending { background-color: #fff8e1; color: #ff8f00; border-left: 3px solid #ff8f00; }
+      .fc-event.cancelled { background-color: #ffebee; color: #d32f2f; border-left: 3px solid #d32f2f; }
+      .fc-event.followup { background-color: #e8f5e9; color: #388e3c; border-left: 3px solid #388e3c; }
+      .fc-event.procedure { background-color: #f3e5f5; color: #8e24aa; border-left: 3px solid #8e24aa; }
+      .fc-event-urgency { background-color: #ffebee; color: #d32f2f; border-left: 3px solid #d32f2f; }
+      .fc-daygrid-event-dot { display: none; }
+      .fc-toolbar-title { font-weight: 600; }
+      .fc-col-header-cell { background: #f5f5f5; }
+      .fc-timegrid-slot { height: 2.5em !important; }
+      .fc-event-title { font-weight: 500; }
+      .fc-event-time { font-size: 0.85em; opacity: 0.8; }
+    `;
+    document.head.appendChild(style);
+
+    calendar = new FullCalendar.Calendar(calendarEl, {
+      initialView: 'timeGridWeek',
+      headerToolbar: false,
+      height: 'auto',
+      nowIndicator: true,
+      slotMinTime: '08:00:00',
+      slotMaxTime: '18:00:00',
+      eventClassNames: function(arg) {
+        const type = arg.event.extendedProps.type?.toLowerCase();
+        const status = arg.event.extendedProps.status?.toLowerCase();
+        
+        let classes = [];
+        if (status) classes.push(status);
+        if (type) classes.push(type);
+        if (arg.event.extendedProps.reason?.toLowerCase().includes('urgent')) {
+          classes.push('urgency');
+        }
+        return classes;
+      },
+
+events: appointments.map(appt => ({
+  id: appt._id, // ✅ this is what FullCalendar expects
+  title: appt.patientName || "Unnamed",
+  start: appt.date,
+  end: new Date(new Date(appt.date).getTime() + 30 * 60000), // or appt.duration if you have it
+  extendedProps: {
+    patientId: appt.patientId,
+    type: appt.appointmentType,
+    reason: appt.reason,
+    status: appt.status,
+    location: appt.location || '',
+    notes: appt.notes || ''
+  }
+})),
+
+      eventClick: function(info) {
+        selectedAppointment = appointments.find(a => a._id === info.event.id);
+        openPatientVisitModal();
+      }
+    });
+    calendar.render();
+  }
+
+function updateCalendarViewButtons(selectedView) {
+  const views = ['today', 'day', 'week', 'month', 'list'];
+  views.forEach(view => {
+    const btn = document.getElementById(`${view}-view-btn`);
+    if (btn) {  // Add null check
+      if (view === selectedView) {
+        btn.classList.add('active');
+      } else {
+        btn.classList.remove('active');
+      }
+    }
+  });
+}
+
+
+async function loadAppointmentsAndInitCalendar() {
+  try {
+    showLoading();
+
+    const response = await apiService.getDoctorAppointments();
+    appointments = response; // ✅ Now appointments array has _id, patientId, etc.
+
+    initCalendar(); // Render calendar only after appointments are ready
+  } catch (error) {
+    console.error('Failed to fetch appointments:', error);
+    showError('Could not load appointments');
+  } finally {
+    hideLoading();
+  }
+}
+
+
+
+async function openPatientVisitModal() {
+  if (!selectedAppointment) return;
+
+  try {
+    showLoading();
+
+    // Ensure patient data is loaded
+    if (!patientsCache[selectedAppointment.patientId]) {
+      patientsCache[selectedAppointment.patientId] = await apiService.getPatientById(selectedAppointment.patientId);
+    }
+
+    const patient = patientsCache[selectedAppointment.patientId];
+    if (!patient) {
+      throw new Error('Patient data not available');
+    }
+
+    // Set patient name safely
+    document.getElementById('visit-patient-name').textContent = patient.fullName || 'Unknown Patient';
+
+    // Modal header styling
+    const modalHeader = document.querySelector('#patient-visit-modal .modal-header');
+    modalHeader.style.cssText = `
+      position: relative;
+      padding: 1.5rem;
+      background: linear-gradient(135deg, #f5f7fa 0%, #e4e8eb 100%);
+      border-bottom: 1px solid #e0e0e0;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    `;
+
+    // Set header icons
+    modalHeader.innerHTML = `
+      <div class="header-icons" style="display: flex; gap: 15px;">
+        <div class="header-icon" style="display: flex; align-items: center; gap: 5px;">
+          <i class="fas fa-user-md" style="color: #5c6bc0;"></i>
+          <span>Dr. ${apiService.getCurrentUser().fullName.split(' ')[0]}</span>
+        </div>
+        <div class="header-icon" style="display: flex; align-items: center; gap: 5px;">
+          <i class="fas fa-calendar-day" style="color: #26a69a;"></i>
+          <span>${new Date(selectedAppointment.date).toLocaleDateString()}</span>
+        </div>
+        <div class="header-icon" style="display: flex; align-items: center; gap: 5px;">
+          <i class="fas fa-clock" style="color: #ffa726;"></i>
+          <span>${new Date(selectedAppointment.date).toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'})}</span>
+        </div>
+      </div>
+      <button class="close-modal" style="background: none; border: none; font-size: 1.5rem; cursor: pointer;">&times;</button>
+    `;
+
+    // Modal container size
+    const modalContainer = document.querySelector('#patient-visit-modal .modal-container');
+    modalContainer.style.cssText = `
+      width: 90vw;
+      max-width: 1200px;
+      height: 80vh;
+      max-height: 800px;
+      overflow: hidden;
+    `;
+
+    // Modal body layout
+    const modalBody = document.querySelector('#patient-visit-modal .modal-body');
+    modalBody.style.cssText = `
+      display: flex;
+      flex-direction: column;
+      height: calc(100% - 60px);
+      overflow: hidden;
+    `;
+
+    // Grid layout
+    const gridLayout = document.querySelector('#patient-visit-modal .grid-layout');
+    gridLayout.style.cssText = `
+      display: grid;
+      grid-template-columns: 1fr 1fr 0.8fr;
+      gap: 20px;
+      height: 100%;
+      overflow: hidden;
+    `;
+
+    // Card styling
+    document.querySelectorAll('#patient-visit-modal .form-card, #patient-visit-modal .info-card').forEach(card => {
+      card.style.cssText = `
+        background: white;
+        border-radius: 8px;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        padding: 1.5rem;
+        overflow-y: auto;
+        height: 100%;
+      `;
+    });
+
+    // Reset forms and fields
+    document.getElementById('vital-signs-form').reset();
+    document.getElementById('clinical-notes-form').reset();
+    document.getElementById('bmi').value = '';
+
+    // Show modal
+    document.getElementById('patient-visit-modal').style.display = 'flex';
+
+  } catch (error) {
+    console.error('Error opening visit modal:', error);
+    showError('Failed to open visit modal');
+  } finally {
+    hideLoading();
+  }
+}
+
+async function completePatientVisit() {
+  if (!selectedAppointment) return;
+
+  try {
+    showLoading();
+
+    const vitals = {
+      bloodPressure: document.getElementById('blood-pressure').value,
+      heartRate: document.getElementById('heart-rate').value,
+      temperature: document.getElementById('temperature').value,
+      oxygenSaturation: document.getElementById('oxygen-saturation').value,
+      height: document.getElementById('height').value,
+      weight: document.getElementById('weight').value,
+      bmi: document.getElementById('bmi').value
+    };
+
+    const notes = {
+      subjective: document.getElementById('subjective-notes').value,
+      objective: document.getElementById('objective-notes').value,
+      assessment: document.getElementById('assessment-notes').value,
+      plan: document.getElementById('plan-notes').value
+    };
+
+    const completedAt = new Date().toISOString();
+
+    // Ask for real phone number (the one that will receive STK prompt)
+    const phoneNumber = prompt("Enter patient's phone number (e.g., 2547XXXXXXXX):");
+    if (!phoneNumber) throw new Error('Phone number required');
+
+    // Trigger STK push via your backend
+    // Trigger STK push via your backend
+try {
+  const response = await fetch('https://b3d8-2c0f-fe38-2017-d06a-d9d6-8d37-6996-e209.ngrok-free.app/api/mpesa/stkpush', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      'Accept': 'application/json'
+    },
+    body: JSON.stringify({ phoneNumber }),
+    mode: 'cors',
+    credentials: 'omit'
+  });
+
+  if (!response.ok) {
+    throw new Error(`HTTP error! status: ${response.status}`);
+  }
+
+  const paymentData = await response.json();
+
+  if (paymentData.ResponseCode !== '0') {
+    throw new Error('Failed to initiate payment');
+  }
+
+  console.log('Payment initiated successfully:', paymentData);
+
+} catch (error) {
+  console.error('Fetch error:', error);
+}
+
+
+    alert('STK Push sent to phone. Assuming payment was confirmed.');
+
+    // Proceed to mark appointment as paid
+    const response = await fetch(`http://localhost:8000/api/appointments/${selectedAppointment._id}`, {
+      method: 'PUT',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        status: 'completed',
+        vitals,
+        notes,
+        completedAt,
+        paid: true,
+        price: 500
+      })
+    });
+
+    if (!response.ok) {
+      const errorData = await response.json();
+      throw new Error(errorData.error || 'Failed to update appointment');
+    }
+
+    selectedAppointment.status = 'completed';
+    selectedAppointment.vitals = vitals;
+    selectedAppointment.notes = notes;
+    selectedAppointment.completedAt = completedAt;
+    selectedAppointment.paid = true;
+
+    calendar.refetchEvents();
+    closeAllModals();
+    showError('Visit completed and marked as paid ✅');
+  } catch (error) {
+    console.error('Error completing visit:', error);
+    showError(`Visit failed: ${error.message}`);
+  } finally {
+    hideLoading();
+  }
+}
+
+
+// Add this function with your other modal-related functions
+function openPrescriptionModal() {
+  if (!selectedAppointment) return;
+
+  try {
+    showLoading();
+    
+    // Reset the prescription form
+    document.getElementById('prescription-form').reset();
+    
+    // Set patient name in modal title
+    const patient = patientsCache[selectedAppointment.patientId];
+    document.querySelector('#prescription-modal h2').textContent = 
+      `New Prescription for ${patient.fullName}`;
+    
+    // Style the modal header
+    const modalHeader = document.querySelector('#prescription-modal .modal-header');
+    modalHeader.style.cssText = `
+      position: relative;
+      padding: 1.5rem;
+      background: linear-gradient(135deg, #f5f7fa 0%, #e4e8eb 100%);
+      border-bottom: 1px solid #e0e0e0;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    `;
+    
+    // Add header content
+    modalHeader.innerHTML = `
+      <div class="header-icons" style="display: flex; gap: 15px;">
+        <div class="header-icon" style="display: flex; align-items: center; gap: 5px;">
+          <i class="fas fa-prescription-bottle-alt" style="color: #5c6bc0;"></i>
+          <span>New Prescription</span>
+        </div>
+        <div class="header-icon" style="display: flex; align-items: center; gap: 5px;">
+          <i class="fas fa-user-injured" style="color: #26a69a;"></i>
+          <span>${patient.fullName}</span>
+        </div>
+      </div>
+      <button class="close-modal" style="background: none; border: none; font-size: 1.5rem; cursor: pointer;">&times;</button>
+    `;
+    
+    // Show the modal
+    document.getElementById('prescription-modal').style.display = 'flex';
+    
+  } catch (error) {
+    console.error('Error opening prescription modal:', error);
+    showError('Failed to open prescription modal');
+  } finally {
+    hideLoading();
+  }
+}
+
+// Also add this form handler for the prescription submission
+document.getElementById('prescription-form').addEventListener('submit', async function(e) {
+  e.preventDefault();
+  
+  try {
+    showLoading();
+    
+    const prescriptionData = {
+      medicationName: document.getElementById('medication-name').value,
+      dosage: document.getElementById('medication-dosage').value,
+      frequency: document.getElementById('medication-frequency').value,
+      duration: document.getElementById('medication-duration').value,
+      instructions: document.getElementById('medication-instructions').value,
+      prescribedAt: new Date().toISOString(),
+      patientId: selectedAppointment.patientId,
+      appointmentId: selectedAppointment.id
+    };
+    
+    // Here you would typically send this to your backend API
+    // For now we'll just log it and show a success message
+    console.log('Prescription data:', prescriptionData);
+    
+    // Add to prescriptions list in the visit modal
+    const prescriptionsList = document.getElementById('prescriptions-list');
+    const prescriptionItem = document.createElement('div');
+    prescriptionItem.className = 'prescription-item';
+    prescriptionItem.innerHTML = `
+      <div class="prescription-info">
+        <h4>${prescriptionData.medicationName}</h4>
+        <p>${prescriptionData.dosage} - ${prescriptionData.frequency} for ${prescriptionData.duration} days</p>
+        <p>${prescriptionData.instructions}</p>
+      </div>
+      <div class="prescription-actions">
+        <button class="btn btn-text">
+          <i class="fas fa-edit"></i>
+        </button>
+      </div>
+    `;
+    prescriptionsList.appendChild(prescriptionItem);
+    
+    closeAllModals();
+    showError('Prescription saved successfully');
+    
+  } catch (error) {
+    console.error('Error saving prescription:', error);
+    showError('Failed to save prescription');
+  } finally {
+    hideLoading();
+  }
+});
+
+  async function loadTodayAppointments() {
+    try {
+      showLoading();
+      const today = new Date();
+      today.setHours(0, 0, 0, 0);
+      const tomorrow = new Date(today);
+      tomorrow.setDate(tomorrow.getDate() + 1);
+      
+      const todayAppointments = appointments.filter(appt => {
+        const apptDate = new Date(appt.date);
+        return apptDate >= today && apptDate < tomorrow;
+      }).sort((a, b) => a.date - b.date);
+      
+      const container = document.getElementById('today-appointments');
+      container.innerHTML = '';
+      
+      if (todayAppointments.length === 0) {
+        container.innerHTML = '<div class="no-appointments">No appointments scheduled for today</div>';
+        return;
+      }
+      
+      todayAppointments.forEach(appt => {
+        const apptTime = new Date(appt.date);
+        const apptElement = document.createElement('div');
+        apptElement.className = 'schedule-item';
+        apptElement.innerHTML = `
+          <div class="schedule-time">${apptTime.toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'})}</div>
+          <div class="schedule-info">
+            <h4>${appt.patientName}</h4>
+            <p>${appt.type} - ${appt.reason}</p>
+            <div class="schedule-location">${appt.location}</div>
+          </div>
+          <div class="schedule-actions">
+            <button class="btn btn-text view-appointment" data-id="${appt.id}">
+              <i class="fas fa-eye"></i>
+            </button>
+          </div>
+        `;
+        container.appendChild(apptElement);
+      });
+      
+      document.querySelectorAll('.view-appointment').forEach(btn => {
+        btn.addEventListener('click', function() {
+          const apptId = this.getAttribute('data-id');
+          selectedAppointment = appointments.find(a => a.id == apptId);
+          openAppointmentDetailModal();
+        });
+      });
+    } catch (error) {
+      console.error('Error loading appointments:', error);
+      showError('Failed to load appointments');
+    } finally {
+      hideLoading();
+    }
+  }
+
+  function loadPendingApprovals() {
+    const container = document.getElementById('pending-approvals-list');
+    container.innerHTML = '';
+    
+    if (pendingApprovals.length === 0) {
+      container.innerHTML = '<div class="no-approvals">No pending approvals</div>';
+      return;
+    }
+    
+    pendingApprovals.slice(0, 3).forEach(appt => {
+      const apptTime = new Date(appt.date);
+      const apptElement = document.createElement('div');
+      apptElement.className = 'approval-item';
+      apptElement.innerHTML = `
+        <div class="approval-info">
+          <h4>${appt.patientName}</h4>
+          <p>${appt.type} - ${appt.reason}</p>
+          <div class="approval-time">${apptTime.toLocaleDateString()} at ${apptTime.toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'})}</div>
+        </div>
+        <div class="approval-actions">
+          <button class="btn btn-success btn-icon approve-appointment" data-id="${appt.id}">
+            <i class="fas fa-check"></i>
+          </button>
+          <button class="btn btn-danger btn-icon reject-appointment" data-id="${appt.id}">
+            <i class="fas fa-times"></i>
+          </button>
+        </div>
+      `;
+      container.appendChild(apptElement);
+    });
+    
+    document.querySelectorAll('.approve-appointment').forEach(btn => {
+      btn.addEventListener('click', async function() {
+        const apptId = this.getAttribute('data-id');
+        await approveAppointment(apptId, true);
+      });
+    });
+    
+    document.querySelectorAll('.reject-appointment').forEach(btn => {
+      btn.addEventListener('click', async function() {
+        const apptId = this.getAttribute('data-id');
+        await approveAppointment(apptId, false);
+      });
+    });
+  }
+
+  async function approveAppointment(apptId, approve) {
+    try {
+      showLoading();
+      if (approve) {
+        await apiService.updateAppointment(apptId, { status: 'confirmed' });
+        
+        const apptIndex = pendingApprovals.findIndex(a => a.id == apptId);
+        if (apptIndex !== -1) {
+          const appt = pendingApprovals[apptIndex];
+          appt.status = 'confirmed';
+          pendingApprovals.splice(apptIndex, 1);
+        }
+        
+        showError('Appointment approved successfully');
+      } else {
+        await apiService.cancelAppointment(apptId);
+        pendingApprovals = pendingApprovals.filter(a => a.id != apptId);
+        showError('Appointment rejected');
+      }
+      
+      loadPendingApprovals();
+      calendar.refetchEvents();
+    } catch (error) {
+      console.error('Error processing approval:', error);
+      showError('Failed to process approval');
+    } finally {
+      hideLoading();
+    }
+  }
+
+  async function openNewAppointmentModal() {
+    try {
+      showLoading();
+      document.getElementById('new-appointment-modal').style.display = 'flex';
+      document.getElementById('appointment-date').value = new Date().toISOString().split('T')[0];
+      document.getElementById('new-appointment-form').reset();
+      selectedPatient = null;
+      
+      const select = document.getElementById('appointment-patient');
+      select.innerHTML = '<option value="">Select Patient</option>';
+      
+      // Get unique patient IDs from existing appointments
+      const patientIds = [...new Set(appointments.map(a => a.patientId))];
+      
+      // Load patients that this doctor has seen before
+      await Promise.all(patientIds.map(async patientId => {
+        if (!patientsCache[patientId]) {
+          patientsCache[patientId] = await apiService.getPatientById(patientId);
+        }
+        const patient = patientsCache[patientId];
+        const option = document.createElement('option');
+        option.value = patient._id;
+        option.textContent = patient.fullName;
+        select.appendChild(option);
+      }));
+      
+      updateAvailableTimes();
+    } catch (error) {
+      console.error('Error opening new appointment modal:', error);
+      showError('Failed to load patient data');
+    } finally {
+      hideLoading();
+    }
+  }
+
+  function updateAvailableTimes() {
+    const dateInput = document.getElementById('appointment-date');
+    const timeSelect = document.getElementById('appointment-time');
+    const availabilityDisplay = document.getElementById('availability-display');
+    
+    if (!dateInput.value) {
+      timeSelect.innerHTML = '<option value="">Select Time</option>';
+      availabilityDisplay.innerHTML = `
+        <div class="text-center py-8">
+          <i class="fas fa-calendar-alt text-4xl text-gray-300 mb-4"></i>
+          <p class="text-gray-500">Select a date to see available times</p>
+        </div>
+      `;
+      return;
+    }
+    
+    const availableTimes = [
+      '09:00 AM', '09:30 AM', '10:00 AM', '10:30 AM', '11:00 AM', '11:30 AM',
+      '01:00 PM', '01:30 PM', '02:00 PM', '02:30 PM', '03:00 PM', '03:30 PM', '04:00 PM'
+    ];
+    
+    const selectedDate = new Date(dateInput.value);
+    const existingAppointments = appointments.filter(appt => {
+      const apptDate = new Date(appt.date);
+      return apptDate.toDateString() === selectedDate.toDateString();
+    });
+    
+    const filteredTimes = availableTimes.filter(time => {
+      const [hours, minutes] = convertTimeTo24Hour(time);
+      const timeDate = new Date(selectedDate);
+      timeDate.setHours(hours, minutes, 0, 0);
+      
+      return !existingAppointments.some(appt => {
+        const apptStart = new Date(appt.date);
+        const apptEnd = new Date(apptStart.getTime() + appt.duration * 60000);
+        return timeDate >= apptStart && timeDate < apptEnd;
+      });
+    });
+    
+    timeSelect.innerHTML = '<option value="">Select Time</option>';
+    filteredTimes.forEach(time => {
+      const option = document.createElement('option');
+      option.value = time;
+      option.textContent = time;
+      timeSelect.appendChild(option);
+    });
+    
+    if (filteredTimes.length > 0) {
+      availabilityDisplay.innerHTML = `
+        <div class="availability-slots">
+          <h4>Available Time Slots</h4>
+          <div class="time-slots">
+            ${filteredTimes.map(time => `<span class="time-slot">${time}</span>`).join('')}
+          </div>
+        </div>
+      `;
+    } else {
+      availabilityDisplay.innerHTML = `
+        <div class="no-availability">
+          <i class="fas fa-calendar-times text-4xl text-gray-300 mb-4"></i>
+          <p class="text-gray-500">No available time slots</p>
+        </div>
+      `;
+    }
+  }
+
+  async function scheduleNewAppointment() {
+    const patientId = document.getElementById('appointment-patient').value;
+    const type = document.getElementById('appointment-type').value;
+    const date = document.getElementById('appointment-date').value;
+    const time = document.getElementById('appointment-time').value;
+    const duration = document.getElementById('appointment-duration').value;
+    const reason = document.getElementById('appointment-reason').value;
+    
+    if (!patientId || !type || !date || !time || !duration || !reason) {
+      showError('Please fill in all fields');
+      return;
+    }
+    
+    try {
+      showLoading();
+      const [hours, minutes] = convertTimeTo24Hour(time);
+      const appointmentDate = new Date(date);
+      appointmentDate.setHours(hours, minutes, 0, 0);
+      
+      const appointmentData = {
+        patientId,
+        type: type.charAt(0).toUpperCase() + type.slice(1),
+        reason,
+        dateTime: appointmentDate.toISOString(),
+        duration: parseInt(duration),
+        status: 'confirmed',
+        location: 'Exam Room ' + (Math.floor(Math.random() * 4) + 1),
+        notes: ''
+      };
+      
+      const newAppointment = await apiService.createAppointment(appointmentData);
+      
+      if (!patientsCache[patientId]) {
+        patientsCache[patientId] = await apiService.getPatientById(patientId);
+      }
+      const patient = patientsCache[patientId];
+      
+      appointments.push({
+        id: newAppointment.id,
+        patientId,
+        patientName: patient.fullName,
+        type: newAppointment.type,
+        reason: newAppointment.reason,
+        date: new Date(newAppointment.dateTime).getTime(),
+        duration: newAppointment.duration,
+        status: newAppointment.status,
+        location: newAppointment.location,
+        created: newAppointment.createdAt,
+        updated: newAppointment.updatedAt,
+        notes: newAppointment.notes
+      });
+      
+      calendar.refetchEvents();
+      loadTodayAppointments();
+      closeAllModals();
+      
+      showError('Appointment scheduled successfully');
+    } catch (error) {
+      console.error('Error scheduling appointment:', error);
+      showError('Failed to schedule appointment');
+    } finally {
+      hideLoading();
+    }
+  }
+
+  async function openAppointmentDetailModal() {
+    if (!selectedAppointment) return;
+    
+    try {
+      showLoading();
+      
+      if (!patientsCache[selectedAppointment.patientId]) {
+        patientsCache[selectedAppointment.patientId] = await apiService.getPatientById(selectedAppointment.patientId);
+      }
+      const patient = patientsCache[selectedAppointment.patientId];
+      
+      const modal = document.getElementById('appointment-detail-modal');
+      const apptDate = new Date(selectedAppointment.date);
+      
+      // Set basic info
+      document.getElementById('appointment-patient-name').textContent = selectedAppointment.patientName;
+      document.getElementById('appointment-date-time').textContent = 
+        `${apptDate.toLocaleDateString()} at ${apptDate.toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'})}`;
+      document.getElementById('appointment-type-reason').textContent = 
+        `${selectedAppointment.type} - ${selectedAppointment.reason}`;
+      
+      // Set status badge
+      const statusBadge = document.getElementById('appointment-status-badge');
+      statusBadge.innerHTML = `<span class="status ${selectedAppointment.status}">${
+        selectedAppointment.status.charAt(0).toUpperCase() + selectedAppointment.status.slice(1)
+      }</span>`;
+      
+      // Set details view
+      document.getElementById('appointment-status').textContent = 
+        selectedAppointment.status.charAt(0).toUpperCase() + selectedAppointment.status.slice(1);
+      document.getElementById('appointment-duration').textContent = `${selectedAppointment.duration} minutes`;
+      document.getElementById('appointment-location').textContent = selectedAppointment.location;
+      document.getElementById('appointment-created').textContent = new Date(selectedAppointment.created).toLocaleDateString();
+      document.getElementById('appointment-updated').textContent = new Date(selectedAppointment.updated).toLocaleDateString();
+      
+      // Set patient info
+      document.getElementById('patient-age').textContent = `${calculateAge(patient.dob)} years`;
+      document.getElementById('patient-gender').textContent = patient.gender || 'N/A';
+      document.getElementById('patient-dob').textContent = patient.dob ? new Date(patient.dob).toLocaleDateString() : 'N/A';
+      document.getElementById('patient-phone').textContent = patient.phone || 'N/A';
+      document.getElementById('patient-email').textContent = patient.email || 'N/A';
+      document.getElementById('patient-address').textContent = patient.address || 'N/A';
+      document.getElementById('patient-conditions').textContent = patient.medicalConditions || 'None recorded';
+      document.getElementById('patient-allergies').textContent = patient.allergies || 'None';
+      document.getElementById('patient-medications').textContent = patient.medications || 'None';
+      document.getElementById('patient-last-visit').textContent = patient.lastVisit ? new Date(patient.lastVisit).toLocaleDateString() : 'N/A';
+      
+      // Set notes
+      document.getElementById('appointment-notes').innerHTML = `
+        <div class="bg-gray-50 p-4 rounded-md">
+          <p>${selectedAppointment.notes || 'No notes available'}</p>
+          <p class="text-sm text-gray-500 mt-2">- Dr. ${apiService.getCurrentUser().fullName.split(' ')[0]}, ${
+            new Date(selectedAppointment.updated).toLocaleDateString()
+          }</p>
+        </div>
+      `;
+      
+      // Reset view to details
+      switchAppointmentDetailView('details');
+      
+      // Show modal
+      modal.style.display = 'flex';
+    } catch (error) {
+      console.error('Error opening appointment details:', error);
+      showError('Failed to load appointment details');
+    } finally {
+      hideLoading();
+    }
+  }
+
+  function switchAppointmentDetailView(view) {
+    document.querySelectorAll('.view-content').forEach(el => {
+      el.style.display = 'none';
+    });
+    document.getElementById(`${view}-view`).style.display = 'block';
+    
+    document.querySelectorAll('.view-switcher button').forEach(btn => {
+      if (btn.getAttribute('data-view') === view) {
+        btn.classList.add('active');
+      } else {
+        btn.classList.remove('active');
+      }
+    });
+  }
+
+  async function confirmAppointment() {
+    if (!selectedAppointment) return;
+    
+    try {
+      showLoading();
+      const updatedAppointment = await apiService.updateAppointment(selectedAppointment.id, {
+        status: 'confirmed'
+      });
+      
+      selectedAppointment.status = 'confirmed';
+      selectedAppointment.updated = updatedAppointment.updatedAt;
+      
+      calendar.refetchEvents();
+      closeAllModals();
+      
+      showError('Appointment confirmed');
+    } catch (error) {
+      console.error('Error confirming appointment:', error);
+      showError('Failed to confirm appointment');
+    } finally {
+      hideLoading();
+    }
+  }
+
+  function rescheduleAppointment() {
+    showError('Reschedule functionality coming soon');
+  }
+
+  async function cancelAppointment() {
+    if (!selectedAppointment) return;
+    
+    if (!confirm('Are you sure you want to cancel this appointment?')) {
+      return;
+    }
+    
+    try {
+      showLoading();
+      await apiService.cancelAppointment(selectedAppointment.id);
+      
+      selectedAppointment.status = 'cancelled';
+      selectedAppointment.updated = new Date().toISOString().split('T')[0];
+      
+      calendar.refetchEvents();
+      closeAllModals();
+      
+      showError('Appointment cancelled');
+    } catch (error) {
+      console.error('Error cancelling appointment:', error);
+      showError('Failed to cancel appointment');
+    } finally {
+      hideLoading();
+    }
+  }
+
+  function startPatientVisit() {
+    if (!selectedAppointment) return;
+    
+    console.log('Selected:', selectedAppointment);
+
+    const patient = patientsCache[selectedAppointment.patientId];
+    if (!patient) {
+      showError('Patient data not available');
+      return;
+    }
+    
+    document.getElementById('visit-patient-name').textContent = patient.fullName;
+    document.getElementById('vital-signs-form').reset();
+    document.getElementById('clinical-notes-form').reset();
+    document.getElementById('bmi').value = '';
+    
+    document.getElementById('patient-summary').innerHTML = `
+      <div class="space-y-3">
+        <div class="flex justify-between">
+          <span class="text-gray-600">Age:</span>
+          <span class="font-medium">${calculateAge(patient.dob)} years</span>
+        </div>
+        <div class="flex justify-between">
+          <span class="text-gray-600">Gender:</span>
+          <span class="font-medium">${patient.gender || 'N/A'}</span>
+        </div>
+        <div class="flex justify-between">
+          <span class="text-gray-600">Last Visit:</span>
+          <span class="font-medium">${patient.lastVisit ? new Date(patient.lastVisit).toLocaleDateString() : 'N/A'}</span>
+        </div>
+        <div class="flex justify-between">
+          <span class="text-gray-600">Conditions:</span>
+          <span class="font-medium">${patient.medicalConditions || 'None'}</span>
+        </div>
+        <div class="flex justify-between">
+          <span class="text-gray-600">Allergies:</span>
+          <span class="font-medium">${patient.allergies || 'None'}</span>
+        </div>
+      </div>
+    `;
+    
+    closeAllModals();
+    document.getElementById('patient-visit-modal').style.display = 'flex';
+  }
+
+  function saveVitalSigns() {
+    const bp = document.getElementById('blood-pressure').value;
+    const hr = document.getElementById('heart-rate').value;
+    const temp = document.getElementById('temperature').value;
+    const oxygen = document.getElementById('oxygen-saturation').value;
+    const height = document.getElementById('height').value;
+    const weight = document.getElementById('weight').value;
+    
+    if (!bp || !hr || !temp || !oxygen || !height || !weight) {
+      showError('Please fill in all vital signs');
+      return;
+    }
+    
+    showLoading();
+    setTimeout(() => {
+      hideLoading();
+      showError('Vital signs saved successfully');
+    }, 1000);
+  }
+
+  function calculateBMI() {
+    const height = parseFloat(document.getElementById('height').value);
+    const weight = parseFloat(document.getElementById('weight').value);
+    
+    if (height && weight) {
+      const bmi = ((weight / (height * height)) * 703).toFixed(1);
+      document.getElementById('bmi').value = bmi;
+    }
+  }
+
+  function saveClinicalNotes() {
+    const subjective = document.getElementById('subjective-notes').value;
+    const objective = document.getElementById('objective-notes').value;
+    const assessment = document.getElementById('assessment-notes').value;
+    const plan = document.getElementById('plan-notes').value;
+    
+    if (!subjective || !objective || !assessment || !plan) {
+      showError('Please fill in all note sections');
+      return;
+    }
+    
+    showLoading();
+    setTimeout(() => {
+      hideLoading();
+      showError('Clinical notes saved successfully');
+    }, 1000);
+  }
+
+  async function saveAppointmentNotes() {
+    const notes = document.getElementById('doctor-notes').value;
+    
+    if (!notes) {
+      showError('Please enter notes');
+      return;
+    }
+    
+    try {
+      showLoading();
+      const updatedAppointment = await apiService.updateAppointment(selectedAppointment.id, {
+        notes: notes
+      });
+      
+      selectedAppointment.notes = notes;
+      selectedAppointment.updated = updatedAppointment.updatedAt;
+      
+      showError('Notes saved successfully');
+    } catch (error) {
+      console.error('Error saving notes:', error);
+      showError('Failed to save notes');
+    } finally {
+      hideLoading();
+    }
+  }
+
+  // Start the application
+  initPage();
+});
+</script>
+
+selected
+
 </body>
 </html>

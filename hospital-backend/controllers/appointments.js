@@ -81,53 +81,73 @@ async function getAppointments(req, res) {
     }
 }
 
-// Update an appointment (time, date, doctor, reason)
+// Update an appointment (time, date, doctor, reason, status, vitals, notes, completedAt, paid)
 async function updateAppointment(req, res) {
-    const url = new URL(req.url, `http://${req.headers.host}`);
-    const appointmentIdFromUrl = url.pathname.split('/').pop(); // Supports PUT /api/appointments/:id
+  const url = new URL(req.url, `http://${req.headers.host}`);
+  const appointmentIdFromUrl = url.pathname.split('/').pop(); // PUT /api/appointments/:id
 
-    let body = '';
-    req.on('data', chunk => body += chunk);
-    req.on('end', async () => {
-        try {
-            const { date, timeSlot, doctorId, reason, status } = JSON.parse(body);
-            const appointmentId = appointmentIdFromUrl;
+  let body = '';
+  req.on('data', chunk => body += chunk);
+  req.on('end', async () => {
+    try {
+      const {
+        date,
+        timeSlot,
+        doctorId,
+        reason,
+        status,
+        vitals,
+        notes,
+        completedAt,
+        paid
+      } = JSON.parse(body);
 
-            if (!appointmentId || (!date && !timeSlot && !doctorId && !reason && !status)) {
-                res.writeHead(400, { 'Content-Type': 'application/json' });
-                return res.end(JSON.stringify({ error: 'Appointment ID and at least one field to update are required' }));
-            }
+      const appointmentId = appointmentIdFromUrl;
 
-            const db = await connectToDatabase();
+      if (
+        !appointmentId ||
+        (!date && !timeSlot && !doctorId && !reason && !status && !vitals && !notes && !completedAt && typeof paid !== 'boolean')
+      ) {
+        res.writeHead(400, { 'Content-Type': 'application/json' });
+        return res.end(JSON.stringify({ error: 'Appointment ID and at least one field to update are required' }));
+      }
 
-            const updateFields = {
-                ...(date && { date: new Date(date) }),
-                ...(timeSlot && { timeSlot }),
-                ...(doctorId && { doctorId: new ObjectId(doctorId) }),
-                ...(reason && { reason }),
-                ...(status && { status }),
-                updatedAt: new Date()
-            };
+      const db = await connectToDatabase();
 
-            const result = await db.collection('appointments').updateOne(
-                { _id: new ObjectId(appointmentId) },
-                { $set: updateFields }
-            );
+      const updateFields = {
+        ...(date && { date: new Date(date) }),
+        ...(timeSlot && { timeSlot }),
+        ...(doctorId && { doctorId: new ObjectId(doctorId) }),
+        ...(reason && { reason }),
+        ...(status && { status }),
+        ...(vitals && { vitals }),
+        ...(notes && { notes }),
+        ...(completedAt && { completedAt: new Date(completedAt) }),
+        ...(typeof paid === 'boolean' && { paid }),
+        updatedAt: new Date()
+      };
 
-            if (result.matchedCount === 0) {
-                res.writeHead(404, { 'Content-Type': 'application/json' });
-                return res.end(JSON.stringify({ error: 'Appointment not found' }));
-            }
+      const result = await db.collection('appointments').updateOne(
+        { _id: new ObjectId(appointmentId) },
+        { $set: updateFields }
+      );
 
-            res.writeHead(200, { 'Content-Type': 'application/json' });
-            res.end(JSON.stringify({ message: 'Appointment updated successfully' }));
-        } catch (error) {
-            console.error('updateAppointment error:', error);
-            res.writeHead(500, { 'Content-Type': 'application/json' });
-            res.end(JSON.stringify({ error: 'Internal server error' }));
-        }
-    });
+      if (result.matchedCount === 0) {
+        res.writeHead(404, { 'Content-Type': 'application/json' });
+        return res.end(JSON.stringify({ error: 'Appointment not found' }));
+      }
+
+      res.writeHead(200, { 'Content-Type': 'application/json' });
+      res.end(JSON.stringify({ message: 'Appointment updated successfully' }));
+    } catch (error) {
+      console.error('updateAppointment error:', error);
+      res.writeHead(500, { 'Content-Type': 'application/json' });
+      res.end(JSON.stringify({ error: 'Internal server error' }));
+    }
+  });
 }
+
+
 
 // Cancel (delete) an appointment
 async function cancelAppointment(req, res) {

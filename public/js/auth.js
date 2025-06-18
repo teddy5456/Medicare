@@ -88,7 +88,7 @@ function redirectAfterLogin(role) {
       window.location.href = 'admin-dashboard.html';
       break;
     case 'doctor':
-      window.location.href = 'doctor-dashboard.html';
+      window.location.href = 'doctor.html';
       break;
     case 'nurse':
       window.location.href = 'nurse-dashboard.html';

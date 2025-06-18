@@ -1,4 +1,5 @@
 const { connectToDatabase } = require('../config/db');
+const { ObjectId } = require('mongodb');
 const bcrypt = require('bcrypt');
 
 // REGISTER USER
@@ -135,7 +136,7 @@ async function getUsers(req, res) {
         if (role) query.role = role;
 
         const users = await db.collection('users').find(query).project({
-            password: 0 // Hide password field
+            password: 0 // Exclude password field
         }).toArray();
 
         res.writeHead(200, { 'Content-Type': 'application/json' });
@@ -147,8 +148,42 @@ async function getUsers(req, res) {
     }
 }
 
+
+
+async function getUserById(req, res) {
+    try {
+        const parsedUrl = require('url').parse(req.url, true);
+        const userId = parsedUrl.query.id;
+
+        if (!userId) {
+            res.writeHead(400, { 'Content-Type': 'application/json' });
+            return res.end(JSON.stringify({ error: 'User ID is required' }));
+        }
+
+        const db = await connectToDatabase();
+        const user = await db.collection('users').findOne(
+            { _id: new ObjectId(userId) },
+            { projection: { password: 0 } }
+        );
+
+        if (!user) {
+            res.writeHead(404, { 'Content-Type': 'application/json' });
+            return res.end(JSON.stringify({ error: 'User not found' }));
+        }
+
+        res.writeHead(200, { 'Content-Type': 'application/json' });
+        res.end(JSON.stringify(user));
+    } catch (error) {
+        console.error('Get user by ID error:', error);
+        res.writeHead(500, { 'Content-Type': 'application/json' });
+        res.end(JSON.stringify({ error: 'Internal server error' }));
+    }
+}
+
+
 module.exports = {
     handleRegister,
     handleLogin,
-    getUsers
+    getUsers,
+    getUserById
 };

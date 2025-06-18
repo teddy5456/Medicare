@@ -1185,3 +1185,30 @@ p {
 .send-btn:hover {
   background-color: var(--light);
 }
+
+.loading-spinner {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  color: #666;
+}
+
+.history-item {
+  background: #f9f9f9;
+  padding: 15px;
+  margin-bottom: 10px;
+  border-radius: 5px;
+  border-left: 4px solid #4a90e2;
+}
+
+.history-item p {
+  margin: 5px 0;
+}
+
+.error {
+  color: #e74c3c;
+  padding: 15px;
+  background: #fdecea;
+  border-radius: 5px;
+}

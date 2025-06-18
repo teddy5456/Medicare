@@ -16,7 +16,7 @@
   <nav class="main-nav">
     <div class="nav-container">
       <a href="index.html" class="logo">
-        <img src="assets/logo.png" alt="MediCare">
+        <img src="https://img.icons8.com/ios-filled/50/4a90e2/hospital-room.png" alt="MediCare Hospital Logo" />
         <span>MediCare</span>
       </a>
       <div class="nav-links">
@@ -26,7 +26,7 @@
         <a href="contact.html">Contact</a>
         <div class="user-menu">
           <button class="user-btn">
-            <img src="assets/patients/patient-default.jpg" alt="Patient" class="user-avatar">
+            <img src="https://images.pexels.com/photos/771742/pexels-photo-771742.jpeg" alt="Patient" class="user-avatar">
             <span>John D.</span>
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
               <polyline points="6 9 12 15 18 9"></polyline>
@@ -47,14 +47,14 @@
               </svg>
               Settings
             </a>
-            <a href="#" id="logout">
-              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M10 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h4"></path>
-                <polyline points="17 16 21 12 17 8"></polyline>
-                <line x1="21" y1="12" x2="9" y2="12"></line>
-              </svg>
-              Logout
-            </a>
+<a href="/login" id="logout" onclick="handleLogout(event)">
+  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M10 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h4"></path>
+    <polyline points="17 16 21 12 17 8"></polyline>
+    <line x1="21" y1="12" x2="9" y2="12"></line>
+  </svg>
+  Logout
+</a>
           </div>
         </div>
       </div>
@@ -161,6 +161,32 @@
           </div>
           <h3>Medical Records</h3>
           <p>Test results and history</p>
+        </div>
+      </div>
+
+            <div class="list-card card-2">
+        <h3>Upcoming Appointments</h3>
+        <p class="section-description">Here’s a list of your scheduled appointments. You can cancel or reschedule if necessary.</p>
+
+<div class="appointment-list">
+  <!-- JS will fill here -->
+</div>
+      </div>
+
+      <!-- Past Appointment History -->
+      <div class="history-card card-3">
+        <h3>Past Appointments</h3>
+        <p class="section-description">Your medical history from past visits is listed below for your reference.</p>
+        <div class="history-list">
+          <div class="history-item">
+            <p><strong>May 15, 2023:</strong> Annual Physical Exam with Dr. Amanda Smith - General Wellness Check</p>
+          </div>
+          <div class="history-item">
+            <p><strong>April 3, 2023:</strong> Lab Testing - Blood Panel and Urinalysis</p>
+          </div>
+          <div class="history-item">
+            <p><strong>March 10, 2023:</strong> Follow-up Consultation - Cardiology review with Dr. Sarah Johnson</p>
+          </div>
         </div>
       </div>
 
@@ -411,173 +437,139 @@
     </div>
   </div>
 
-  <!-- Billing Modal -->
-  <div class="modal" id="billing-modal">
-    <div class="modal-container landscape">
-      <div class="modal-header">
-        <h2>
-          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <line x1="12" y1="1" x2="12" y2="23"></line>
-            <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path>
-          </svg>
-          Billing & Payments
-        </h2>
-        <button class="close-modal">&times;</button>
+<!-- Billing Modal -->
+<div class="modal" id="billing-modal">
+  <div class="modal-container landscape">
+    <div class="modal-header">
+      <h2>
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="12" y1="1" x2="12" y2="23"></line>
+          <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path>
+        </svg>
+        Billing & Payments
+      </h2>
+      <button class="close-modal">&times;</button>
+    </div>
+    <div class="modal-body grid-layout">
+      <div class="form-card card-1">
+        <h3>Make a Payment</h3>
+        <form id="payment-form">
+          <div class="form-group">
+            <label for="payment-amount">Amount ($)</label>
+            <input type="number" id="payment-amount" name="payment-amount" min="1" step="0.01" value="150.00">
+          </div>
+          <div class="form-group">
+            <label for="payment-method">Payment Method</label>
+            <select id="payment-method" name="payment-method">
+              <option value="credit-card">Credit/Debit Card</option>
+              <option value="mpesa">MPESA</option>
+              <option value="insurance">Insurance</option>
+            </select>
+          </div>
+          <div class="form-actions">
+            <button type="submit" class="btn btn-primary">Submit Payment</button>
+          </div>
+        </form>
       </div>
-      <div class="modal-body grid-layout">
-        <div class="form-card card-1">
-          <h3>Make a Payment</h3>
-          <form id="payment-form">
-            <div class="form-group">
-              <label for="payment-amount">Amount ($)</label>
-              <input type="number" id="payment-amount" name="payment-amount" min="1" step="0.01" value="150.00">
-            </div>
-            <div class="form-group">
-              <label for="payment-method">Payment Method</label>
-              <select id="payment-method" name="payment-method">
-                <option value="credit-card">Credit/Debit Card</option>
-                <option value="mpesa">MPESA</option>
-                <option value="insurance">Insurance</option>
-              </select>
-            </div>
-            <div class="form-actions">
-              <button type="submit" class="btn btn-primary">Submit Payment</button>
-            </div>
-          </form>
-        </div>
 
-        <div class="list-card card-2">
-          <h3>Payment History</h3>
-          <div class="payment-list">
-            <div class="payment-item">
-              <div class="payment-info">
-                <p><strong>June 1, 2023</strong></p>
-                <p>Cardiology Consultation</p>
-              </div>
-              <div class="payment-amount">
-                <p>$150.00</p>
-                <span class="status-badge paid">Paid</span>
-              </div>
-            </div>
-            <div class="payment-item">
-              <div class="payment-info">
-                <p><strong>May 15, 2023</strong></p>
-                <p>Lab Tests</p>
-              </div>
-              <div class="payment-amount">
-                <p>$75.00</p>
-                <span class="status-badge paid">Paid</span>
-              </div>
-            </div>
-          </div>
+      <div class="list-card card-2">
+        <h3>Payment History</h3>
+        <div class="payment-list" id="payment-history-list">
+          <div class="loading-spinner">Loading payment history...</div>
         </div>
+      </div>
 
-        <div class="summary-card card-3">
-          <h3>Billing Summary</h3>
-          <div class="summary-item">
-            <p>Outstanding Balance</p>
-            <p class="amount">$0.00</p>
-          </div>
-          <div class="summary-item">
-            <p>Last Payment</p>
-            <p class="amount">$150.00</p>
-          </div>
-          <div class="summary-item">
-            <p>Insurance Coverage</p>
-            <p class="amount">80%</p>
-          </div>
+      <div class="summary-card card-3">
+        <h3>Billing Summary</h3>
+        <div class="summary-item">
+          <p>Outstanding Balance</p>
+          <p class="amount">$0.00</p>
+        </div>
+        <div class="summary-item">
+          <p>Last Payment</p>
+          <p class="amount" id="last-payment-amount">$0.00</p>
+        </div>
+        <div class="summary-item">
+          <p>Insurance Coverage</p>
+          <p class="amount">80%</p>
         </div>
       </div>
     </div>
   </div>
+</div>
 
-  <!-- Medical Records Modal -->
-  <div class="modal" id="records-modal">
-    <div class="modal-container landscape">
-      <div class="modal-header">
-        <h2>
-          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
-            <polyline points="14 2 14 8 20 8"></polyline>
-            <line x1="16" y1="13" x2="8" y2="13"></line>
-            <line x1="16" y1="17" x2="8" y2="17"></line>
-            <polyline points="10 9 9 9 8 9"></polyline>
-          </svg>
-          Medical Records
-        </h2>
-        <button class="close-modal">&times;</button>
+<!-- Medical Records Modal -->
+<div class="modal" id="records-modal">
+  <div class="modal-container landscape">
+    <div class="modal-header">
+      <h2>
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+          <polyline points="14 2 14 8 20 8"></polyline>
+          <line x1="16" y1="13" x2="8" y2="13"></line>
+          <line x1="16" y1="17" x2="8" y2="17"></line>
+          <polyline points="10 9 9 9 8 9"></polyline>
+        </svg>
+        Medical Records
+      </h2>
+      <button class="close-modal">&times;</button>
+    </div>
+    <div class="modal-body grid-layout">
+      <div class="form-card card-1">
+        <h3>Request Records</h3>
+        <form id="records-request-form">
+          <div class="form-group">
+            <label>Record Type</label>
+            <div class="radio-group">
+              <label>
+                <input type="radio" name="record-type" value="all" checked>
+                All Records
+              </label>
+              <label>
+                <input type="radio" name="record-type" value="lab">
+                Lab Results Only
+              </label>
+              <label>
+                <input type="radio" name="record-type" value="visit">
+                Visit Summaries Only
+              </label>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="records-email">Email Address</label>
+            <input type="email" id="records-email" name="records-email" value="john.doe@example.com">
+          </div>
+          <div class="form-actions">
+            <button type="submit" class="btn btn-primary">Request Records</button>
+          </div>
+        </form>
       </div>
-      <div class="modal-body grid-layout">
-        <div class="form-card card-1">
-          <h3>Request Records</h3>
-          <form id="records-request-form">
-            <div class="form-group">
-              <label>Record Type</label>
-              <div class="radio-group">
-                <label>
-                  <input type="radio" name="record-type" value="all" checked>
-                  All Records
-                </label>
-                <label>
-                  <input type="radio" name="record-type" value="lab">
-                  Lab Results Only
-                </label>
-                <label>
-                  <input type="radio" name="record-type" value="visit">
-                  Visit Summaries Only
-                </label>
-              </div>
-            </div>
-            <div class="form-group">
-              <label for="records-email">Email Address</label>
-              <input type="email" id="records-email" name="records-email" value="john.doe@example.com">
-            </div>
-            <div class="form-actions">
-              <button type="submit" class="btn btn-primary">Request Records</button>
-            </div>
-          </form>
-        </div>
 
-        <div class="list-card card-2">
-          <h3>Available Records</h3>
-          <div class="records-list">
-            <div class="record-item">
-              <div class="record-info">
-                <h4>Annual Physical Exam</h4>
-                <p>June 1, 2023 - Dr. Smith</p>
-              </div>
-              <div class="record-actions">
-                <button class="btn btn-text">View</button>
-                <button class="btn btn-primary">Download</button>
-              </div>
+      <div class="list-card card-2">
+        <h3>Available Records</h3>
+        <div class="records-list">
+          <div class="record-item">
+            <div class="record-info">
+              <h4>Annual Physical Exam</h4>
+              <p>June 1, 2023 - Dr. Smith</p>
             </div>
-            <div class="record-item">
-              <div class="record-info">
-                <h4>Blood Test Results</h4>
-                <p>May 15, 2023 - LabCorp</p>
-              </div>
-              <div class="record-actions">
-                <button class="btn btn-text">View</button>
-                <button class="btn btn-primary">Download</button>
-              </div>
+            <div class="record-actions">
+              <button class="btn btn-text">View</button>
+              <button class="btn btn-primary">Download</button>
             </div>
           </div>
         </div>
+      </div>
 
-        <div class="history-card card-3">
-          <h3>Record History</h3>
-          <div class="history-list">
-            <div class="history-item">
-              <p><strong>March 10, 2023</strong> - Cardiology Follow-up Notes</p>
-            </div>
-            <div class="history-item">
-              <p><strong>January 5, 2023</strong> - Annual Blood Work Results</p>
-            </div>
-          </div>
+      <div class="history-card card-3">
+        <h3>Medical History</h3>
+        <div class="history-list" id="medical-history-list">
+          <div class="loading-spinner">Loading medical history...</div>
         </div>
       </div>
     </div>
   </div>
+</div>
 
   <!-- Profile Modal -->
   <div class="modal" id="profile-modal">
@@ -783,6 +775,30 @@ document.addEventListener("DOMContentLoaded", () => {
   loadDoctorOptions();
   loadAppointments();
 
+// Handle logout functionality
+function handleLogout(event) {
+  event.preventDefault(); // Prevent immediate navigation
+  sessionStorage.clear(); // Clear all session storage
+  window.location.href = '/login'; // Redirect to login page
+}
+
+// Add event listener (alternative to onclick attribute)
+document.addEventListener('DOMContentLoaded', () => {
+  const logoutButton = document.getElementById('logout');
+  if (logoutButton) {
+    logoutButton.addEventListener('click', handleLogout);
+  }
+});
+  // Load billing data when modal opens
+  document.getElementById('billing-card')?.addEventListener('click', () => {
+    setTimeout(loadPaymentHistory, 300); // Small delay to ensure modal is open
+  });
+
+  // Load medical history when modal opens
+  document.getElementById('records-card')?.addEventListener('click', () => {
+    setTimeout(loadMedicalHistory, 300);
+  });
+
   ['appointment-date', 'appointment-time', 'appointment-doctor'].forEach(id => {
     const el = document.getElementById(id);
     if (el) el.addEventListener('change', checkDoctorAvailability);
@@ -791,6 +807,93 @@ document.addEventListener("DOMContentLoaded", () => {
   if (appointmentForm) {
     appointmentForm.addEventListener('submit', handleNewAppointment);
   }
+
+async function loadPaymentHistory() {
+  const patientId = getPatientId();
+  if (!patientId) return;
+  
+  try {
+    const res = await fetch(`http://localhost:8000/api/appointments?patientId=${patientId}&paid=true`);
+    if (!res.ok) throw new Error('Failed to fetch payment history');
+    const paidAppointments = await res.json();
+    
+    const paymentList = document.getElementById('payment-history-list');
+    if (!paymentList) return;
+    
+    if (paidAppointments.length === 0) {
+      paymentList.innerHTML = '<p class="no-records">No payment history found.</p>';
+      return;
+    }
+    
+    paymentList.innerHTML = paidAppointments.map(app => {
+      const { fullDate } = formatDateParts(app.date);
+      const doctorName = doctorMap[app.doctorId] || 'Doctor';
+      return `
+        <div class="payment-item">
+          <div class="payment-info">
+            <p><strong>${fullDate}</strong></p>
+            <p>${capitalize(app.appointmentType || 'appointment')} with ${doctorName}</p>
+          </div>
+          <div class="payment-amount">
+            <p>$${app.amount || '150.00'}</p>
+            <span class="status-badge paid">Paid</span>
+          </div>
+        </div>
+      `;
+    }).join('');
+    
+    // Update billing summary
+    const totalPaid = paidAppointments.reduce((sum, app) => sum + (parseFloat(app.amount) || 150), 0);
+    document.getElementById('last-payment-amount').textContent = `$${totalPaid.toFixed(2)}`;
+    
+  } catch (err) {
+    console.error('Payment history error:', err);
+    const paymentList = document.getElementById('payment-history-list');
+    if (paymentList) {
+      paymentList.innerHTML = '<p class="error">Failed to load payment history. Please try again later.</p>';
+    }
+  }
+}
+
+async function loadMedicalHistory() {
+  const patientId = getPatientId();
+  if (!patientId) return;
+  
+  try {
+    const res = await fetch(`http://localhost:8000/api/appointments?patientId=${patientId}&status=completed`);
+    if (!res.ok) throw new Error('Failed to fetch medical history');
+    const completedAppointments = await res.json();
+    
+    const historyList = document.getElementById('medical-history-list');
+    if (!historyList) return;
+    
+    if (completedAppointments.length === 0) {
+      historyList.innerHTML = '<p class="no-records">No medical history found.</p>';
+      return;
+    }
+    
+    historyList.innerHTML = completedAppointments.map(app => {
+      const { fullDate } = formatDateParts(app.date);
+      const doctorName = doctorMap[app.doctorId] || 'Doctor';
+      return `
+        <div class="history-item">
+          <p><strong>${fullDate}:</strong> ${capitalize(app.appointmentType || 'appointment')} with ${doctorName}</p>
+          ${app.diagnosis ? `<p><strong>Diagnosis:</strong> ${app.diagnosis}</p>` : ''}
+          ${app.treatment ? `<p><strong>Treatment:</strong> ${app.treatment}</p>` : ''}
+          ${app.notes ? `<p><strong>Notes:</strong> ${app.notes}</p>` : ''}
+        </div>
+      `;
+    }).join('');
+    
+  } catch (err) {
+    console.error('Medical history error:', err);
+    const historyList = document.getElementById('medical-history-list');
+    if (historyList) {
+      historyList.innerHTML = '<p class="error">Failed to load medical history. Please try again later.</p>';
+    }
+  }
+}
+
 
   function getPatientId() {
     const user = JSON.parse(sessionStorage.getItem('user'));
@@ -846,7 +949,6 @@ document.addEventListener("DOMContentLoaded", () => {
     try {
       const res = await fetch(`${API_BASE}?patientId=${patientId}`);
       if (!res.ok) throw new Error('Appointment fetch failed');
-
       const appointments = await res.json();
       const today = new Date().toISOString().split('T')[0];
 
@@ -983,60 +1085,85 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   async function sendAppointmentEmail(patientEmail, appointmentData, actionType) {
+    let subject = 'Appointment Notification';
+    const { appointment_type, doctor_name } = appointmentData;
+
+    if (actionType === 'confirm') {
+      subject = `Appointment Confirmed – ${appointment_type} with ${doctor_name}`;
+    } else if (actionType === 'cancel') {
+      subject = `Appointment Cancelled – ${appointment_type} with ${doctor_name}`;
+    } else if (actionType === 'reschedule') {
+      subject = `Appointment Rescheduled – ${appointment_type} with ${doctor_name}`;
+    }
+
     const templateParams = {
       ...appointmentData,
       is_confirmation: actionType === 'confirm' ? 'true' : '',
       is_cancellation: actionType === 'cancel' ? 'true' : '',
-      is_reschedule: actionType === 'reschedule' ? 'true' : ''
+      is_reschedule: actionType === 'reschedule' ? 'true' : '',
+      subject
+    };
+
+    const body = {
+      service_id: EMAILJS_CONFIG.service_id,
+      template_id: EMAILJS_CONFIG.template_id,
+      user_id: EMAILJS_CONFIG.user_id,
+      template_params: templateParams
     };
 
     try {
-      await fetch('https://api.emailjs.com/api/v1.0/email/send', {
+      const res = await fetch('https://api.emailjs.com/api/v1.0/email/send', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ ...EMAILJS_CONFIG, template_params: templateParams })
+        body: JSON.stringify(body)
       });
+
+      if (!res.ok) {
+        const errText = await res.text();
+        console.error('EmailJS error:', errText);
+        throw new Error(`EmailJS failed: ${res.status}`);
+      }
     } catch (err) {
-      console.error('Email failed:', err);
+      console.error('Email sending error:', err);
+      throw err;
     }
   }
 
-window.cancelAppointment = async (id) => {
-  if (!confirm('Cancel this appointment?')) return;
+  window.cancelAppointment = async (id) => {
+    if (!confirm('Cancel this appointment?')) return;
 
-  try {
-    const res = await fetch(`${API_BASE}?appointmentId=${id}`);
-    const appointment = await res.json();
+    try {
+      const res = await fetch(`${API_BASE}?appointmentId=${id}`);
+      if (!res.ok) throw new Error('Failed to fetch appointment');
+      const appointment = await res.json();
 
-    await fetch(`${API_BASE}?appointmentId=${id}`, { method: 'DELETE' });
+      await fetch(`${API_BASE}?appointmentId=${id}`, { method: 'DELETE' });
 
-    const user = JSON.parse(sessionStorage.getItem('user'));
-    await sendAppointmentEmail(user.email, {
-      appointment_id: id,
-      patient_name: user.fullName,
-      doctor_name: doctorMap[appointment.doctorId],
-      appointment_date: formatDateParts(appointment.date).fullDate,
-      appointment_time: appointment.timeSlot,
-      appointment_type: capitalize(appointment.appointmentType),
-      appointment_reason: appointment.reason,
-      patient_email: user.email
-    }, 'cancel');
+      const user = JSON.parse(sessionStorage.getItem('user'));
+      await sendAppointmentEmail(user.email, {
+        appointment_id: id,
+        patient_name: user.fullName,
+        doctor_name: doctorMap[appointment.doctorId] || 'Your Doctor',
+        appointment_date: formatDateParts(appointment.date).fullDate,
+        appointment_time: appointment.timeSlot,
+        appointment_type: capitalize(appointment.appointmentType || 'appointment'),
+        appointment_reason: appointment.reason || 'Not specified',
+        patient_email: user.email
+      }, 'cancel');
 
-    // Remove from DOM instantly
-    const appointmentDiv = document.querySelector(`.appointment-item button.btn-danger[onclick*="${id}"]`)?.closest('.appointment-item');
-    if (appointmentDiv) appointmentDiv.remove();
+      const appointmentDiv = document.querySelector(`.appointment-item button.btn-danger[onclick*="${id}"]`)?.closest('.appointment-item');
+      if (appointmentDiv) appointmentDiv.remove();
 
-    // If no more appointments, show fallback
-    if (appointmentList.children.length === 0) {
-      appointmentList.innerHTML = '<p class="no-appointments">No upcoming appointments.</p>';
+      if (appointmentList.children.length === 0) {
+        appointmentList.innerHTML = '<p class="no-appointments">No upcoming appointments.</p>';
+      }
+
+      alert('Appointment cancelled and email sent.');
+    } catch (err) {
+      console.error('Cancel error:', err);
+      alert('Failed to cancel appointment. Please try again.');
     }
-
-    alert('Appointment cancelled.');
-  } catch (err) {
-    console.error('Cancel error:', err);
-    alert('Failed to cancel appointment. Please try again.');
-  }
-};
+  };
 
   window.rescheduleAppointment = async (id) => {
     const newDate = prompt('New date (YYYY-MM-DD):');
@@ -1088,6 +1215,8 @@ window.cancelAppointment = async (id) => {
   };
 });
 </script>
+
+
 
 
 </body>
