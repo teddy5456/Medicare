@@ -1,0 +1,563 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MediCare - Our Doctors</title>
+  <style>
+    /* Base Styles */
+    :root {
+      --primary: #3498DB;
+      --secondary: #a29bfe;
+      --accent: #fd79a8;
+      --light: #f8f9fa;
+      --dark: #2d3436;
+      --success: #00b894;
+      --info: #0984e3;
+    }
+    
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background-color: var(--light);
+      color: var(--dark);
+      line-height: 1.6;
+    }
+    
+    /* Navigation */
+    .main-nav {
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      padding: 1rem 0;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+    
+    .nav-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    
+    .logo {
+      display: flex;
+      align-items: center;
+      text-decoration: none;
+      color: white;
+      font-weight: 700;
+      font-size: 1.5rem;
+    }
+    
+    .logo img {
+      height: 40px;
+      margin-right: 10px;
+    }
+    
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 2rem;
+    }
+    
+    .nav-links a {
+      color: white;
+      text-decoration: none;
+      font-weight: 500;
+      transition: all 0.3s ease;
+    }
+    
+    .nav-links a:hover {
+      color: var(--accent);
+      transform: translateY(-2px);
+    }
+    
+    /* Hero Section */
+    .hero {
+      background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80');
+      background-size: cover;
+      background-position: center;
+      height: 50vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      color: white;
+      padding: 0 2rem;
+    }
+    
+    .hero-content {
+      max-width: 800px;
+    }
+    
+    .hero h1 {
+      font-size: 3.5rem;
+      margin-bottom: 1rem;
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+    }
+    
+    /* Doctors Section */
+    .doctors-section {
+      padding: 5rem 2rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    
+    .section-title {
+      text-align: center;
+      margin-bottom: 3rem;
+      color: var(--primary);
+      font-size: 2.5rem;
+      position: relative;
+    }
+    
+    .section-title::after {
+      content: '';
+      display: block;
+      width: 80px;
+      height: 4px;
+      background: var(--accent);
+      margin: 1rem auto;
+    }
+    
+    .specialty-tabs {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+      margin-bottom: 3rem;
+    }
+    
+    .tab-btn {
+      padding: 0.8rem 1.5rem;
+      background: white;
+      border: 2px solid var(--primary);
+      border-radius: 30px;
+      color: var(--primary);
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+    
+    .tab-btn.active, .tab-btn:hover {
+      background: var(--primary);
+      color: white;
+    }
+    
+    .doctors-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+      gap: 3rem;
+    }
+    
+    .doctor-card {
+      background: white;
+      border-radius: 15px;
+      overflow: hidden;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+      transition: transform 0.3s ease;
+    }
+    
+    .doctor-card:hover {
+      transform: translateY(-10px);
+    }
+    
+    .doctor-img {
+      height: 350px;
+      overflow: hidden;
+    }
+    
+    .doctor-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+    }
+    
+    .doctor-card:hover .doctor-img img {
+      transform: scale(1.05);
+    }
+    
+    .doctor-info {
+      padding: 2rem;
+      position: relative;
+    }
+    
+    .doctor-info h3 {
+      color: var(--primary);
+      font-size: 1.5rem;
+      margin-bottom: 0.5rem;
+    }
+    
+    .specialty {
+      display: inline-block;
+      background: var(--secondary);
+      color: white;
+      padding: 0.3rem 1rem;
+      border-radius: 20px;
+      font-size: 0.9rem;
+      margin-bottom: 1rem;
+    }
+    
+    .education {
+      color: var(--dark);
+      opacity: 0.8;
+      margin-bottom: 1rem;
+      font-size: 0.9rem;
+    }
+    
+    .doctor-bio {
+      margin-bottom: 1.5rem;
+      color: var(--dark);
+    }
+    
+    .doctor-meta {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 1.5rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid rgba(0,0,0,0.1);
+    }
+    
+    .experience {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      color: var(--primary);
+    }
+    
+    .appointment-btn {
+      padding: 0.6rem 1.5rem;
+      background: var(--primary);
+      color: white;
+      border: none;
+      border-radius: 30px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+    
+    .appointment-btn:hover {
+      background: var(--accent);
+      transform: translateY(-2px);
+    }
+    
+    /* Footer */
+    footer {
+      background: var(--dark);
+      color: white;
+      padding: 3rem 2rem;
+      text-align: center;
+    }
+    
+    .footer-content {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2rem;
+      text-align: left;
+    }
+    
+    .footer-column h3 {
+      color: var(--accent);
+      margin-bottom: 1.5rem;
+      font-size: 1.2rem;
+    }
+    
+    .footer-column ul {
+      list-style: none;
+    }
+    
+    .footer-column ul li {
+      margin-bottom: 0.8rem;
+    }
+    
+    .footer-column ul li a {
+      color: white;
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+    
+    .footer-column ul li a:hover {
+      color: var(--accent);
+    }
+    
+    .social-links {
+      display: flex;
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+    
+    .social-links a {
+      color: white;
+      font-size: 1.5rem;
+      transition: color 0.3s ease;
+    }
+    
+    .social-links a:hover {
+      color: var(--accent);
+    }
+    
+    .copyright {
+      margin-top: 3rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid rgba(255,255,255,0.1);
+    }
+    
+    /* Responsive */
+    @media (max-width: 768px) {
+      .hero h1 {
+        font-size: 2.5rem;
+      }
+      
+      .doctors-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Navigation -->
+  <nav class="main-nav">
+    <div class="nav-container">
+      <a href="index.html" class="logo">
+        <img src="https://img.icons8.com/color/48/000000/hospital.png" alt="MediCare">
+        <span>MediCare</span>
+      </a>
+      <div class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="services.html">Services</a>
+        <a href="doctors.html" class="active">Our Doctors</a>
+        <a href="contact.html">Contact</a>
+        <a href="/login" id="logout">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M10 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h4"></path>
+            <polyline points="17 16 21 12 17 8"></polyline>
+            <line x1="21" y1="12" x2="9" y2="12"></line>
+          </svg>
+          Logout
+        </a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="hero-content">
+      <h1>Meet Our Doctors</h1>
+      <p>Board-certified specialists dedicated to your health and well-being</p>
+    </div>
+  </section>
+
+  <!-- Doctors Section -->
+  <section class="doctors-section">
+    <h2 class="section-title">Our Medical Specialists</h2>
+    
+    <div class="specialty-tabs">
+      <button class="tab-btn active" data-specialty="all">All Specialties</button>
+      <button class="tab-btn" data-specialty="cardiology">Cardiology</button>
+      <button class="tab-btn" data-specialty="neurology">Neurology</button>
+      <button class="tab-btn" data-specialty="pediatrics">Pediatrics</button>
+      <button class="tab-btn" data-specialty="orthopedics">Orthopedics</button>
+    </div>
+    
+    <div class="doctors-grid">
+      <!-- Doctor 1 -->
+      <div class="doctor-card" data-specialty="cardiology">
+        <div class="doctor-img">
+          <img src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Dr. Sarah Johnson">
+        </div>
+        <div class="doctor-info">
+          <h3>Dr. Sarah Johnson</h3>
+          <span class="specialty">Cardiology</span>
+          <p class="education">MD, Harvard Medical School • Fellowship in Interventional Cardiology</p>
+          <p class="doctor-bio">With over 15 years of experience, Dr. Johnson specializes in minimally invasive cardiac procedures and has published numerous papers on innovative treatment methods for heart disease.</p>
+          <div class="doctor-meta">
+            <div class="experience">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                <polyline points="14 2 14 8 20 8"></polyline>
+                <line x1="16" y1="13" x2="8" y2="13"></line>
+                <line x1="16" y1="17" x2="8" y2="17"></line>
+                <polyline points="10 9 9 9 8 9"></polyline>
+              </svg>
+              15+ Years Experience
+            </div>
+            <button class="appointment-btn">Book Appointment</button>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Doctor 2 -->
+      <div class="doctor-card" data-specialty="neurology">
+        <div class="doctor-img">
+          <img src="https://images.unsplash.com/photo-1622253692010-333f2da6031d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1964&q=80" alt="Dr. Michael Chen">
+        </div>
+        <div class="doctor-info">
+          <h3>Dr. Michael Chen</h3>
+          <span class="specialty">Neurology</span>
+          <p class="education">MD, Stanford University • Fellowship in Neuroimmunology</p>
+          <p class="doctor-bio">Dr. Chen is a leading researcher in multiple sclerosis and neurodegenerative disorders, combining cutting-edge research with compassionate patient care.</p>
+          <div class="doctor-meta">
+            <div class="experience">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                <polyline points="14 2 14 8 20 8"></polyline>
+                <line x1="16" y1="13" x2="8" y2="13"></line>
+                <line x1="16" y1="17" x2="8" y2="17"></line>
+                <polyline points="10 9 9 9 8 9"></polyline>
+              </svg>
+              12+ Years Experience
+            </div>
+            <button class="appointment-btn">Book Appointment</button>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Doctor 3 -->
+      <div class="doctor-card" data-specialty="pediatrics">
+        <div class="doctor-img">
+          <img src="https://images.unsplash.com/photo-1594824476967-48c8b964273f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1974&q=80" alt="Dr. Amanda Smith">
+        </div>
+        <div class="doctor-info">
+          <h3>Dr. Amanda Smith</h3>
+          <span class="specialty">Pediatrics</span>
+          <p class="education">MD, Johns Hopkins University • Fellowship in Pediatric Allergy</p>
+          <p class="doctor-bio">Specializing in childhood allergies and asthma, Dr. Smith takes a holistic approach to pediatric care, focusing on both treatment and prevention.</p>
+          <div class="doctor-meta">
+            <div class="experience">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                <polyline points="14 2 14 8 20 8"></polyline>
+                <line x1="16" y1="13" x2="8" y2="13"></line>
+                <line x1="16" y1="17" x2="8" y2="17"></line>
+                <polyline points="10 9 9 9 8 9"></polyline>
+              </svg>
+              10+ Years Experience
+            </div>
+            <button class="appointment-btn">Book Appointment</button>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Doctor 4 -->
+      <div class="doctor-card" data-specialty="orthopedics">
+        <div class="doctor-img">
+          <img src="https://images.unsplash.com/photo-1622253692010-333f2da6031d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1964&q=80" alt="Dr. Robert Williams">
+        </div>
+        <div class="doctor-info">
+          <h3>Dr. Robert Williams</h3>
+          <span class="specialty">Orthopedics</span>
+          <p class="education">MD, Mayo Clinic • Fellowship in Sports Medicine</p>
+          <p class="doctor-bio">A former team physician for professional athletes, Dr. Williams specializes in minimally invasive joint procedures and sports injury rehabilitation.</p>
+          <div class="doctor-meta">
+            <div class="experience">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                <polyline points="14 2 14 8 20 8"></polyline>
+                <line x1="16" y1="13" x2="8" y2="13"></line>
+                <line x1="16" y1="17" x2="8" y2="17"></line>
+                <polyline points="10 9 9 9 8 9"></polyline>
+              </svg>
+              18+ Years Experience
+            </div>
+            <button class="appointment-btn">Book Appointment</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-content">
+      <div class="footer-column">
+        <h3>MediCare</h3>
+        <p>Compassionate care from board-certified physicians using the latest medical technologies.</p>
+        <div class="social-links">
+          <a href="#"><i class="fab fa-facebook"></i></a>
+          <a href="#"><i class="fab fa-twitter"></i></a>
+          <a href="#"><i class="fab fa-instagram"></i></a>
+          <a href="#"><i class="fab fa-linkedin"></i></a>
+        </div>
+      </div>
+      <div class="footer-column">
+        <h3>Quick Links</h3>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="services.html">Services</a></li>
+          <li><a href="doctors.html">Our Doctors</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer-column">
+        <h3>Contact Us</h3>
+        <ul>
+          <li>123 Medical Drive</li>
+          <li>Healthville, HV 12345</li>
+          <li>Phone: (555) 123-4567</li>
+          <li>Email: info@medicare.com</li>
+          <li>Emergency: 24/7</li>
+        </ul>
+      </div>
+    </div>
+    <div class="copyright">
+      <p>&copy; 2023 MediCare. All Rights Reserved.</p>
+    </div>
+  </footer>
+
+  <!-- Font Awesome for icons -->
+  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+
+  <!-- JavaScript -->
+  <script>
+    // Logout functionality
+    document.getElementById('logout').addEventListener('click', function(e) {
+      e.preventDefault();
+      sessionStorage.clear();
+      window.location.href = '/login';
+    });
+
+    // Specialty filter functionality
+    const tabBtns = document.querySelectorAll('.tab-btn');
+    const doctorCards = document.querySelectorAll('.doctor-card');
+    
+    tabBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        // Update active tab
+        tabBtns.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        
+        const specialty = btn.dataset.specialty;
+        
+        // Filter doctors
+        doctorCards.forEach(card => {
+          if (specialty === 'all' || card.dataset.specialty === specialty) {
+            card.style.display = 'block';
+          } else {
+            card.style.display = 'none';
+          }
+        });
+      });
+    });
+    
+    // Appointment button functionality
+    const appointmentBtns = document.querySelectorAll('.appointment-btn');
+    appointmentBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        const doctorName = btn.closest('.doctor-card').querySelector('h3').textContent;
+        alert(`Appointment request for ${doctorName} has been sent. Our staff will contact you shortly.`);
+      });
+    });
+  </script>
+</body>
+</html>
